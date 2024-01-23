@@ -1,6 +1,6 @@
 import { FiMoon, FiSun } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/ui/DarkModeProvider";
+import { useTheme } from "./DarkModeProvider";
 
 function DarkModeToggle() {
   const { theme, setTheme } = useTheme();

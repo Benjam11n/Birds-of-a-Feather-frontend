@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 
-import { DarkModeProvider } from "./ui/DarkModeProvider";
+import DarkModeProvider from "./ui/DarkModeProvider";
 import DashBoard from "./pages/DashBoard";
 import AppLayout from "./ui/AppLayout";
 import Friends from "./pages/Friends";
