@@ -1,12 +1,12 @@
 import { users } from "@/types/allTypes";
 import AvatarIcon from "@/ui/AvatarIcon";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CiCalendarDate } from "react-icons/ci";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import { CiCalendarDate } from "react-icons/ci";
 import { format } from "date-fns";
 
 function PostUser({ postCreator }: { postCreator: users }) {

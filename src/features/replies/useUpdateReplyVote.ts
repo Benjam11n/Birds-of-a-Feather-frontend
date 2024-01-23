@@ -18,11 +18,13 @@ export function useUpdateReplyVote(replyId: number) {
         replyVote.userId === replyVoteInput.userId ? replyVoteInput : replyVote
       );
 
+      // optimistic update
       queryClient.setQueryData(queryKey, updatedArray);
 
       return { previousVotes };
     },
     onError: (_, __, context) => {
+      // set data back to original state if error occurs
       queryClient.setQueryData(queryKey, () => context?.previousVotes);
     },
     onSettled: () => {

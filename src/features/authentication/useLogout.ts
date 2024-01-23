@@ -11,6 +11,8 @@ export function useLogout() {
     mutationFn: logOutApi,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["currentUser"] });
+
+      // navigate to the login page and create toast notification
       navigate("/login", { replace: true });
       toast.success("Successfully logged out");
     },

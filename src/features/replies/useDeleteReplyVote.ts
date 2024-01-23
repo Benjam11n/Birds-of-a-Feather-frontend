@@ -19,11 +19,13 @@ export function useDeleteReplyVote(replyId: number) {
         (replyVote: replyVote) => replyVote.replyId !== replyId
       );
 
+      // optimistic update
       queryClient.setQueryData(queryKey, updatedArray);
 
       return { previousVotes };
     },
     onError: (_, __, context) => {
+      // set data back to original state if error occurs
       queryClient.setQueryData(queryKey, () => context?.previousVotes);
     },
     onSettled: () => {

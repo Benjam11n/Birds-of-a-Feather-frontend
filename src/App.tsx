@@ -1,9 +1,10 @@
+import "../src/styles/global.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
-import "../src/styles/global.css";
 
+import { DarkModeProvider } from "./ui/DarkModeProvider";
 import DashBoard from "./pages/DashBoard";
 import AppLayout from "./ui/AppLayout";
 import Friends from "./pages/Friends";
@@ -12,7 +13,6 @@ import AccountLayout from "./pages/AccountLayout";
 import PageNotFound from "./ui/PageNotFound";
 import Login from "./pages/Login";
 import ProtectedRoute from "./ui/ProtectedRoute";
-import { DarkModeProvider } from "./ui/darkModeProvider";
 import AccountStatistics from "./features/users/AccountStatistics";
 import AccountDetails from "./features/users/AccountDetails";
 import Communities from "./pages/Communities";

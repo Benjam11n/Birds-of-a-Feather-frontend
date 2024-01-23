@@ -17,14 +17,20 @@ export function useCreateReply(parentId: number) {
       const repliesArray = [...(previousReplies || [])];
       repliesArray.push(newReply);
 
+      // optimistic update
       queryClient.setQueryData(queryKey, repliesArray);
-      toast.success("reply successfully created");
 
       return { previousReplies };
     },
     onError: (_, __, context) => {
+      // set data back to original state if error occurs
       queryClient.setQueryData(queryKey, () => context?.previousReplies);
-      toast.error("Unable to create reply");
+      // display error toast
+      toast.error("Failed to create reply.");
+    },
+    onSuccess: () => {
+      // display success toast
+      toast.success("Reply successfully updated.");
     },
     onSettled: () => {
       queryClient.invalidateQueries({

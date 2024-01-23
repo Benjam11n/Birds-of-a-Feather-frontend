@@ -1,4 +1,4 @@
-import { useTheme } from "./darkModeProvider";
+import { useTheme } from "./DarkModeProvider";
 import {
   Area,
   AreaChart,

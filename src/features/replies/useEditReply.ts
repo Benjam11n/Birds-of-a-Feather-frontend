@@ -29,7 +29,7 @@ export function useEditReply(parentId: number) {
       const updatedArray = repliesArray.map((reply: reply) =>
         reply.ID === variables.replyId ? variables.newReply : reply
       );
-      toast.success("reply successfully edited");
+      toast.success("Reply successfully edited.");
 
       queryClient.setQueryData(queryKey, updatedArray);
 
@@ -37,7 +37,12 @@ export function useEditReply(parentId: number) {
     },
     onError: (_, __, context) => {
       queryClient.setQueryData(queryKey, () => context?.previousReplies);
-      toast.error("Error updating reply");
+      // display error toast
+      toast.error("Failed to update reply.");
+    },
+    onSuccess: () => {
+      // display success toast
+      toast.success("Reply successfully updated.");
     },
     onSettled: () => {
       queryClient.invalidateQueries({

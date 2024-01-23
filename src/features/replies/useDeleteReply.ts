@@ -21,13 +21,18 @@ export function useDeleteReply(parentId: number) {
       );
 
       queryClient.setQueryData(queryKey, updatedArray);
-      toast.success("reply successfully deleted");
+      toast.success("Reply successfully deleted.");
 
       return { previousReplies };
     },
     onError: (_, __, context) => {
       queryClient.setQueryData(queryKey, () => context?.previousReplies);
-      toast.error("Error deleting reply");
+      // display error toast
+      toast.error("Failed to delete reply.");
+    },
+    onSuccess: () => {
+      // display success toast
+      toast.success("Reply successfully updated.");
     },
     onSettled: () => {
       queryClient.invalidateQueries({

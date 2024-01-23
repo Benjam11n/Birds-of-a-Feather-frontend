@@ -17,14 +17,19 @@ export function useCreatePost() {
       const postsArray = [...(previousPosts || [])];
       postsArray.push(newPost);
 
-      toast.success("newPost successfully created");
+      // optimistic updates
       queryClient.setQueryData(queryKey, postsArray);
 
       return { previousPosts };
     },
     onError: (_, __, context) => {
+      // set data back to original state if error occurs
       queryClient.setQueryData(queryKey, () => context?.previousPosts);
-      toast.error("Error creating newPost");
+      toast.error("Failed to create post. Please try again.");
+    },
+    onSuccess: () => {
+      // display success toast
+      toast.success("Post successfully created.");
     },
     onSettled: () => {
       queryClient.invalidateQueries({

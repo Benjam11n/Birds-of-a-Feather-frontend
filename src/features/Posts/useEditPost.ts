@@ -18,15 +18,22 @@ export function useEditPost() {
       const updatedArray = postsArray.map((post: post) =>
         post.postId === variables.id ? variables.newPost : post
       );
-      toast.success("post successfully edited");
 
+      // optimistic updates
       queryClient.setQueryData(queryKey, updatedArray);
 
       return { previousPosts };
     },
-    onError: (_, __, context) => {
+    onError: (__, _, context) => {
+      // set data back to original state if error occurs
       queryClient.setQueryData(queryKey, () => context?.previousPosts);
-      toast.error("Error updating post");
+
+      // display error toast
+      toast.error("Failed to update post. Please try again.");
+    },
+    onSuccess: () => {
+      // display success toast
+      toast.success("Post successfully updated.");
     },
     onSettled: () => {
       queryClient.invalidateQueries({

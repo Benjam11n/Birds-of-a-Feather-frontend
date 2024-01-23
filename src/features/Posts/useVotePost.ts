@@ -16,11 +16,13 @@ export function useVotePost(postId: number) {
       const votesArray = [...(previousVotes || [])];
       votesArray.push(newVotePost);
 
+      // optimistic updates
       queryClient.setQueryData(queryKey, votesArray);
 
       return { previousVotes };
     },
     onError: (_, __, context) => {
+      // set data back to original state if error occurs
       queryClient.setQueryData(queryKey, () => context?.previousVotes);
     },
     onSettled: () => {

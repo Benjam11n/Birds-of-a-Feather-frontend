@@ -31,6 +31,8 @@ function PostTable() {
     return (bMembers?.length || 0) - (aMembers?.length || 0);
   });
 
+  const topTenCommunities = sortedCommunities?.slice(0, 10);
+
   if (
     isLoadingPosts ||
     isLoadingCommunities ||
@@ -136,7 +138,7 @@ function PostTable() {
       </div>
 
       <div className="ml-6 mr-24 mt-12">
-        <AdditionalInformation popularCommunities={sortedCommunities} />
+        <AdditionalInformation popularCommunities={topTenCommunities} />
       </div>
       <div>
         <Pagination count={count} />

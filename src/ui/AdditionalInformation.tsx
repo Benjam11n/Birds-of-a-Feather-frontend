@@ -24,6 +24,7 @@ function AdditionalInformation({
   const { followings, isLoading } = useFollowing();
 
   if (isLoading) return <Spinner />;
+  // calculate the number of followers
   const followerNum: number =
     followings?.filter((following: users) => following.ID === user?.ID)
       .length || 0;

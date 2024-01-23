@@ -20,14 +20,19 @@ export function useDeletePost() {
         (post: post) => post.postId !== id
       );
 
+      // optimistic updates
       queryClient.setQueryData(queryKey, updatedArray);
-      toast.success("post successfully deleted");
 
       return { previousPosts };
     },
     onError: (_, __, context) => {
+      // set data back to original state if error occurs
       queryClient.setQueryData(queryKey, () => context?.previousPosts);
-      toast.error("Error deleting post");
+      toast.error("Failed to delete post. Please try again.");
+    },
+    onSuccess: () => {
+      // display success toast
+      toast.success("Post successfully deleted.");
     },
     onSettled: () => {
       queryClient.invalidateQueries({

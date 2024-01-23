@@ -13,7 +13,7 @@ export function usePosts() {
     queryFn: getPosts,
   });
 
-  //pre-fetching
+  // my attempt at prefetching posts
   // IMPLEMEMENT PREFETCHING HERE
   // const pageCount = Math.ceil(posts.length / PAGE_SIZE);
   // if (page < pageCount)

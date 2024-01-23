@@ -133,12 +133,12 @@ function ReplyRow({ reply }: { reply: reply }) {
           </CardDescription>
           {reply.imagesUrl && (
             <img
-              className="rounded-md max-h-[300px] object-contain relative "
+              className="rounded-md max-h-[300px] object-contain relative"
               src={"http://localhost:8080" + reply.imagesUrl}
               alt="reply image"
             ></img>
           )}
-          {content}
+          <div className="pt-8">{content}</div>
         </CardHeader>
         <CardFooter className="flex flex-row justify-end">
           <div className="flex flex-row gap-1">
