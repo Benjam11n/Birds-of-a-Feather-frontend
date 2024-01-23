@@ -1,7 +1,8 @@
 import { community, communityMember, newCommunity } from "@/types/allTypes";
+import { BACKEND_URL } from "@/utils/constants";
 
 export async function getCommunities() {
-  const response = await fetch("http://localhost:8080/communities", {
+  const response = await fetch(`${BACKEND_URL}/communities`, {
     method: "GET",
   });
   if (!response.ok) throw new Error("Failed to get communities");
@@ -10,12 +11,9 @@ export async function getCommunities() {
 }
 
 export async function getCommunity(communityId: number) {
-  const response = await fetch(
-    `http://localhost:8080/communities/${communityId}`,
-    {
-      method: "GET",
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/communities/${communityId}`, {
+    method: "GET",
+  });
   if (!response.ok) throw new Error("Failed to get community");
   const community: community = await response.json();
   return community;
@@ -29,7 +27,7 @@ export async function createCommunity(newCommunity: newCommunity) {
   formData.append("Category", newCommunity.category);
   formData.append("Description", newCommunity.description);
   formData.append("iconUrl", newCommunity.iconUrl);
-  const response = await fetch("http://localhost:8080/communities", {
+  const response = await fetch(`${BACKEND_URL}/communities`, {
     method: "POST",
     headers: {
       Authorization: `${localStorage.getItem("token")}`,
@@ -46,36 +44,30 @@ export async function updateCommunity({
   communityId: number;
   newCommunity: newCommunity;
 }) {
-  const response = await fetch(
-    `http://localhost:8080/communities/${communityId}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(newCommunity),
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/communities/${communityId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(newCommunity),
+  });
   if (!response.ok) throw new Error("Failed to edit community");
 }
 
 export async function deleteCommunity(communityId: number) {
-  const response = await fetch(
-    `http://localhost:8080/communities/${communityId}`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: `${localStorage.getItem("token")}`,
-      },
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/communities/${communityId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
   if (!response.ok) throw new Error("Failed to delete community");
 }
 
 export async function createCommunityMember(communityId: number) {
   const response = await fetch(
-    `http://localhost:8080/communities/${communityId}/members`,
+    `${BACKEND_URL}/communities/${communityId}/members`,
     {
       method: "POST",
       headers: {
@@ -87,7 +79,7 @@ export async function createCommunityMember(communityId: number) {
 }
 
 export async function getAllCommunityMembers() {
-  const response = await fetch(`http://localhost:8080/communitymembers`, {
+  const response = await fetch(`${BACKEND_URL}/communitymembers`, {
     method: "GET",
   });
   if (!response.ok) throw new Error("Failed to get community members");
@@ -97,7 +89,7 @@ export async function getAllCommunityMembers() {
 
 export async function getCommunityMembers(communityId: number) {
   const response = await fetch(
-    `http://localhost:8080/communities/${communityId}/members`,
+    `${BACKEND_URL}/communities/${communityId}/members`,
     {
       method: "GET",
     }
@@ -109,7 +101,7 @@ export async function getCommunityMembers(communityId: number) {
 
 export async function deleteCommunityMember(communityId: number) {
   const response = await fetch(
-    `http://localhost:8080/communities/${communityId}/members`,
+    `${BACKEND_URL}/communities/${communityId}/members`,
     {
       method: "DELETE",
       headers: {

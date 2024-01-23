@@ -1,19 +1,17 @@
 import { newReply, replyVote } from "@/types/allTypes";
+import { BACKEND_URL } from "@/utils/constants";
 
 export async function getReplies(parentId: number) {
-  const response = await fetch(
-    `http://localhost:8080/posts/${parentId}/replies`,
-    {
-      method: "GET",
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/posts/${parentId}/replies`, {
+    method: "GET",
+  });
   if (!response.ok) throw new Error("Failed to get replies");
   const replies = await response.json();
   return replies;
 }
 
 export async function getAllReplies() {
-  const response = await fetch(`http://localhost:8080/replies`, {
+  const response = await fetch(`${BACKEND_URL}/replies`, {
     method: "GET",
   });
   if (!response.ok) throw new Error("Failed to get replies");
@@ -29,7 +27,7 @@ export async function createReply(newReply: newReply) {
   formData.append("Content", newReply.content);
   formData.append("imagesUrl", newReply.imagesUrl);
   const response = await fetch(
-    `http://localhost:8080/posts/${newReply.parentId}/replies`,
+    `${BACKEND_URL}/posts/${newReply.parentId}/replies`,
     {
       method: "POST",
       headers: {
@@ -49,7 +47,7 @@ export async function editReply({
   newReply: newReply;
 }) {
   const response = await fetch(
-    `http://localhost:8080/posts/${newReply.parentId}/replies/${replyId}`,
+    `${BACKEND_URL}/posts/${newReply.parentId}/replies/${replyId}`,
     {
       method: "PUT",
       headers: {
@@ -70,7 +68,7 @@ export async function deleteReply({
   parentId: number;
 }) {
   const response = await fetch(
-    `http://localhost:8080/posts/${parentId}/replies/${replyId}`,
+    `${BACKEND_URL}/posts/${parentId}/replies/${replyId}`,
     {
       method: "DELETE",
       headers: {
@@ -83,28 +81,22 @@ export async function deleteReply({
 
 export async function voteReply(newReplyVote: replyVote) {
   const replyId = newReplyVote.replyId;
-  const response = await fetch(
-    `http://localhost:8080/replies/${replyId}/votes`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(newReplyVote),
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/replies/${replyId}/votes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(newReplyVote),
+  });
 
   if (!response.ok) throw new Error("Failed to like reply");
 }
 
 export async function getReplyVotes(replyId: number): Promise<replyVote[]> {
-  const response = await fetch(
-    `http://localhost:8080/replies/${replyId}/votes`,
-    {
-      method: "GET",
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/replies/${replyId}/votes`, {
+    method: "GET",
+  });
   if (!response.ok) throw new Error("Failed to get reply votes");
   const replyVotes = await response.json();
   return replyVotes.totalVotes;
@@ -112,29 +104,23 @@ export async function getReplyVotes(replyId: number): Promise<replyVote[]> {
 
 export async function updateReplyVote(newReplyVote: replyVote) {
   const replyId = newReplyVote.replyId;
-  const response = await fetch(
-    `http://localhost:8080/replies/${replyId}/votes`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(newReplyVote),
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/replies/${replyId}/votes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(newReplyVote),
+  });
   if (!response.ok) throw new Error("Failed to update reply");
 }
 
 export async function deleteReplyVote(replyId: number) {
-  const response = await fetch(
-    `http://localhost:8080/replies/${replyId}/votes`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: `${localStorage.getItem("token")}`,
-      },
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/replies/${replyId}/votes`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
   if (!response.ok) throw new Error("Failed to delete reply");
 }

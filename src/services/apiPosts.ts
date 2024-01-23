@@ -1,7 +1,8 @@
+import { BACKEND_URL } from "@/utils/constants";
 import { post, newPost, postVote } from "../types/allTypes";
 
 export async function getPosts() {
-  const response = await fetch("http://localhost:8080/posts", {
+  const response = await fetch(`${BACKEND_URL}/posts`, {
     method: "GET",
   });
   if (!response.ok) throw new Error("Failed to get posts");
@@ -10,7 +11,7 @@ export async function getPosts() {
 }
 
 export async function getPost(postId: number) {
-  const response = await fetch(`http://localhost:8080/posts/${postId}`, {
+  const response = await fetch(`${BACKEND_URL}/posts/${postId}`, {
     method: "GET",
   });
   if (!response.ok) throw new Error("Failed to get post");
@@ -27,7 +28,7 @@ export async function createPost(newPost: newPost) {
   formData.append("Tags", newPost.tags);
   formData.append("Content", newPost.content);
   formData.append("imagesUrl", newPost.imagesUrl);
-  const response = await fetch("http://localhost:8080/posts", {
+  const response = await fetch(`${BACKEND_URL}/posts`, {
     method: "POST",
     headers: {
       Authorization: `${localStorage.getItem("token")}`,
@@ -44,7 +45,7 @@ export async function editPost({
   id: number;
   newPost: newPost;
 }) {
-  const response = await fetch(`http://localhost:8080/posts/${id}`, {
+  const response = await fetch(`${BACKEND_URL}/posts/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +56,7 @@ export async function editPost({
   if (!response.ok) throw new Error("Failed to edit post");
 }
 export async function deletePost(id: number) {
-  const response = await fetch(`http://localhost:8080/posts/${id}`, {
+  const response = await fetch(`${BACKEND_URL}/posts/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `${localStorage.getItem("token")}`,
@@ -67,7 +68,7 @@ export async function deletePost(id: number) {
 export async function votePost(postVote: postVote) {
   const id = postVote.postId;
 
-  const response = await fetch(`http://localhost:8080/posts/${id}/votes`, {
+  const response = await fetch(`${BACKEND_URL}/posts/${id}/votes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -79,7 +80,7 @@ export async function votePost(postVote: postVote) {
 }
 
 export async function getPostVotes(id: number): Promise<postVote[]> {
-  const response = await fetch(`http://localhost:8080/posts/${id}/votes`, {
+  const response = await fetch(`${BACKEND_URL}/posts/${id}/votes`, {
     method: "GET",
   });
   if (!response.ok) throw new Error("Failed to get post votes");
@@ -88,7 +89,7 @@ export async function getPostVotes(id: number): Promise<postVote[]> {
 }
 
 export async function getAllPostVotes(): Promise<postVote[]> {
-  const response = await fetch(`http://localhost:8080/postvotes`, {
+  const response = await fetch(`${BACKEND_URL}/postvotes`, {
     method: "GET",
   });
   if (!response.ok) throw new Error("Failed to get post votes");
@@ -103,7 +104,7 @@ export async function updatePostVote({
   id: number;
   postVote: postVote;
 }) {
-  const response = await fetch(`http://localhost:8080/posts/${id}/votes`, {
+  const response = await fetch(`${BACKEND_URL}/posts/${id}/votes`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -115,7 +116,7 @@ export async function updatePostVote({
 }
 
 export async function deletePostVote(id: number) {
-  const response = await fetch(`http://localhost:8080/posts/${id}/votes`, {
+  const response = await fetch(`${BACKEND_URL}/posts/${id}/votes`, {
     method: "DELETE",
     headers: {
       Authorization: `${localStorage.getItem("token")}`,

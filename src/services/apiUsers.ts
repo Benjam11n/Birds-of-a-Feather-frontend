@@ -1,4 +1,5 @@
 import { newUser, newUserAvatar, newUserPassword } from "@/types/allTypes";
+import { BACKEND_URL } from "@/utils/constants";
 
 export async function updateUser({
   userId,
@@ -7,7 +8,7 @@ export async function updateUser({
   userId: number;
   newUser: newUser;
 }) {
-  const response = await fetch(`http://localhost:8080/users/${userId}`, {
+  const response = await fetch(`${BACKEND_URL}/users/${userId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +29,7 @@ export async function updateUserAvatar({
   const formData = new FormData();
   formData.append("avatarUrl", newUser.avatarUrl);
 
-  const response = await fetch(`http://localhost:8080/users/${userId}/avatar`, {
+  const response = await fetch(`${BACKEND_URL}/users/${userId}/avatar`, {
     method: "PUT",
     headers: {
       Authorization: `${localStorage.getItem("token")}`,
@@ -48,22 +49,19 @@ export async function updateUserPassword({
   userId: number;
   newUser: newUserPassword;
 }) {
-  const response = await fetch(
-    `http://localhost:8080/users/${userId}/password`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(newUser),
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/users/${userId}/password`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(newUser),
+  });
   if (!response.ok) throw new Error("Failed to update user");
 }
 
 export async function getUserCommunities() {
-  const response = await fetch(`http://localhost:8080/userCommunities`, {
+  const response = await fetch(`${BACKEND_URL}/userCommunities`, {
     method: "GET",
     headers: {
       Authorization: `${localStorage.getItem("token")}`,

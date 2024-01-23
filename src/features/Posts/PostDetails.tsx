@@ -1,7 +1,7 @@
 import { post, postVote, users } from "@/types/allTypes";
 import PostUser from "./PostUser";
 import { Badge } from "@/components/ui/badge";
-import { timeAgo } from "@/services/timeAgo";
+import { timeAgo } from "@/utils/timeAgo";
 import { usePostVotes } from "./usePostVotes";
 import Spinner from "@/ui/Spinner";
 import { useCommunityById } from "../communities/useCommunityById";

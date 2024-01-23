@@ -1,5 +1,7 @@
+import { BACKEND_URL } from "@/utils/constants";
+
 export async function getFollowings() {
-  const response = await fetch(`http://localhost:8080/follows`, {
+  const response = await fetch(`${BACKEND_URL}/follows`, {
     method: "GET",
     headers: {
       Authorization: `${localStorage.getItem("token")}`,
@@ -12,7 +14,7 @@ export async function getFollowings() {
 }
 
 export async function createFollow(followeeId: number) {
-  const response = await fetch(`http://localhost:8080/follows`, {
+  const response = await fetch(`${BACKEND_URL}/follows`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,7 +26,7 @@ export async function createFollow(followeeId: number) {
 }
 
 export async function deleteFollow(followeeId: number) {
-  const response = await fetch(`http://localhost:8080/follows`, {
+  const response = await fetch(`${BACKEND_URL}/follows`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

@@ -1,8 +1,9 @@
 import { LoginUser } from "@/types/allTypes";
+import { BACKEND_URL } from "@/utils/constants";
 
 export async function login(user: LoginUser) {
   // make the fetch request with the data as the body
-  const response = await fetch("http://localhost:8080/login", {
+  const response = await fetch(`${BACKEND_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,7 +17,7 @@ export async function login(user: LoginUser) {
 }
 
 export async function getCurrentUser() {
-  const response = await fetch("http://localhost:8080/", {
+  const response = await fetch(`${BACKEND_URL}/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -44,7 +45,7 @@ export async function signUp({
   });
 
   // make the fetch request with the data as the body
-  const response = await fetch("http://localhost:8080/signup", {
+  const response = await fetch(`${BACKEND_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -56,7 +57,7 @@ export async function signUp({
 }
 
 export async function getUsers() {
-  const response = await fetch(`http://localhost:8080/users`);
+  const response = await fetch(`${BACKEND_URL}/users`);
   if (!response.ok) throw new Error("Failed to fetch users");
 
   const friends = await response.json();
@@ -64,7 +65,7 @@ export async function getUsers() {
 }
 
 export async function logOut(): Promise<void> {
-  const response = await fetch("http://localhost:8080/logout", {
+  const response = await fetch(`${BACKEND_URL}/logout`, {
     method: "POST",
     headers: {
       Authorization: `${localStorage.getItem("token")}`,
