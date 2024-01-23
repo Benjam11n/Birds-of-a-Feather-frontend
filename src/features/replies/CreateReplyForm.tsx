@@ -62,7 +62,10 @@ export default function CreateReplyForm({ postId }: { postId: number }) {
     form.reset();
   }, [isSubmitSuccessful, form]);
 
-  const handleSubmit = (values: z.infer<typeof formSchema>, e) => {
+  const handleSubmit = (
+    values: z.infer<typeof formSchema>,
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     const newReply: newReply = {
       content: values.content,
       parentId: postId,

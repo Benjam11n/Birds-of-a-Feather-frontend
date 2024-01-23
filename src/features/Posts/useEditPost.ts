@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { editPost as editPostApi } from "../../services/apiPosts";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Post } from "@/types/allTypes";
+import { post } from "@/types/allTypes";
 
 export function useEditPost() {
   const queryClient = useQueryClient();
@@ -12,13 +12,13 @@ export function useEditPost() {
     onMutate: async (variables) => {
       await queryClient.cancelQueries({ queryKey: queryKey });
 
-      const previousPosts = queryClient.getQueryData<Post[]>(queryKey);
+      const previousPosts = queryClient.getQueryData<post[]>(queryKey);
 
       const postsArray = [...(previousPosts || [])];
-      const updatedArray = postsArray.map((post: Post) =>
+      const updatedArray = postsArray.map((post: post) =>
         post.postId === variables.id ? variables.newPost : post
       );
-      toast.success("Post successfully edited");
+      toast.success("post successfully edited");
 
       queryClient.setQueryData(queryKey, updatedArray);
 

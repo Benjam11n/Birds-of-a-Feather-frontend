@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { deleteReply as deleteReplyApi } from "../../services/apiReplies";
-import { Reply } from "@/types/allTypes";
+import { reply } from "@/types/allTypes";
 
 export function useDeleteReply(parentId: number) {
   const queryClient = useQueryClient();
@@ -12,16 +12,16 @@ export function useDeleteReply(parentId: number) {
     onMutate: async ({ replyId }: { replyId: number }) => {
       await queryClient.cancelQueries({ queryKey: queryKey });
 
-      const previousReplies = queryClient.getQueryData<Reply[]>(queryKey);
+      const previousReplies = queryClient.getQueryData<reply[]>(queryKey);
 
       const postsArray = [...(previousReplies || [])];
 
       const updatedArray = postsArray.filter(
-        (reply: Reply) => reply.replyId !== replyId
+        (reply: reply) => reply.ID !== replyId
       );
 
       queryClient.setQueryData(queryKey, updatedArray);
-      toast.success("Reply successfully deleted");
+      toast.success("reply successfully deleted");
 
       return { previousReplies };
     },

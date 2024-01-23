@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { editReply as editReplyApi } from "../../services/apiReplies";
 import toast from "react-hot-toast";
-import { Reply, newReply } from "@/types/allTypes";
+import { reply, newReply } from "@/types/allTypes";
 
 interface EditReplyProps {
   replyId: number;
@@ -14,21 +14,22 @@ export function useEditReply(parentId: number) {
 
   const { mutate: editReply, status } = useMutation<
     void,
-    { previousReplies: Reply[] },
-    EditReplyProps
+    { previousReplies: reply[] },
+    EditReplyProps,
+    { previousReplies: reply[] }
   >({
     mutationFn: editReplyApi,
     onMutate: async (variables) => {
       await queryClient.cancelQueries({ queryKey: queryKey });
 
-      const previousReplies: Reply[] =
-        queryClient.getQueryData<Reply[]>(queryKey) || [];
+      const previousReplies: reply[] =
+        queryClient.getQueryData<reply[]>(queryKey) || [];
 
       const repliesArray = [...(previousReplies || [])];
-      const updatedArray = repliesArray.map((reply: Reply) =>
-        reply.replyId === variables.replyId ? variables.newReply : reply
+      const updatedArray = repliesArray.map((reply: reply) =>
+        reply.ID === variables.replyId ? variables.newReply : reply
       );
-      toast.success("Reply successfully edited");
+      toast.success("reply successfully edited");
 
       queryClient.setQueryData(queryKey, updatedArray);
 

@@ -29,7 +29,8 @@ function EditUsernameForm() {
   const { updateUser, status } = useUpdateUser();
   const isUpdating: boolean = status === "pending";
 
-  const { ID, userBio, name, avatarUrl, email, password } = currentUser;
+  const { ID, userBio, name, avatarUrl, email, password, CreatedAt } =
+    currentUser;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -54,6 +55,7 @@ function EditUsernameForm() {
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
     const newUser: users = {
       ID,
+      CreatedAt,
       name: values.username,
       email,
       password,

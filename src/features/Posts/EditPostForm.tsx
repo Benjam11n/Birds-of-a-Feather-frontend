@@ -82,7 +82,14 @@ export default function EditPostForm({ postToEdit }: { postToEdit: post }) {
   const { editPost, status } = useEditPost();
   const isEditing: boolean = status === "pending";
 
-  const { ID: postId, content, title, communityId } = postToEdit;
+  const {
+    ID: postId,
+    content,
+    title,
+    communityId,
+    CreatedAt,
+    imagesUrl,
+  } = postToEdit;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -110,8 +117,10 @@ export default function EditPostForm({ postToEdit }: { postToEdit: post }) {
     const newPost: newPost = {
       title: values.title,
       content: values.content,
+      CreatedAt,
       communityId,
       tags: values.tags || "",
+      imagesUrl: imagesUrl,
     };
     editPost({ id: postId, newPost });
   };

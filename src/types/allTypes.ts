@@ -16,7 +16,8 @@ export interface post {
   views: number;
   votes: number;
   tags: string;
-  [key: string]: number | string | boolean;
+  imagesUrl: File | string;
+  [key: string]: number | string | boolean | File;
 }
 
 export interface reply {
@@ -64,7 +65,7 @@ export interface newPost {
   communityId: number;
   title: string;
   content: string;
-  imagesUrl: File;
+  imagesUrl: File | string;
   CreatedAt: string;
   tags: string;
 }
@@ -72,7 +73,7 @@ export interface newPost {
 export interface newReply {
   content: string;
   parentId: number;
-  imagesUrl: File;
+  imagesUrl: File | string;
   CreatedAt: string;
 }
 
@@ -121,7 +122,7 @@ export interface newCommunity {
   title: string;
   description: string;
   category: string;
-  iconUrl: File;
+  iconUrl: File | string;
   CreatedAt: string;
 }
 

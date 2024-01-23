@@ -69,6 +69,7 @@ export default function EditCommunityForm({
     description,
     category,
     CreatedAt,
+    iconUrl,
   } = communityToEdit;
   const { updateCommunity, status } = useUpdateCommunity(communityId);
   const isEditingCommunity: boolean = status === "pending";
@@ -78,7 +79,16 @@ export default function EditCommunityForm({
     defaultValues: {
       title: title,
       description: description,
-      category: category,
+      category: category as
+        | "General Bird Care"
+        | "Bird Watching"
+        | "Veterinary Care"
+        | "Breeding and Reproduction"
+        | "Conservation and Environmental Issues"
+        | "Events and Competitions"
+        | "Marketplace"
+        | "Others"
+        | undefined,
     },
   });
 
@@ -99,8 +109,9 @@ export default function EditCommunityForm({
     const newCommunity: newCommunity = {
       title: values.title,
       description: values.description,
-      category: values.category,
+      category: values.category || "",
       CreatedAt: CreatedAt,
+      iconUrl,
     };
     updateCommunity({ communityId, newCommunity: newCommunity });
   };

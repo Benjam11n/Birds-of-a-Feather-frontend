@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { deletePost as deletePostApi } from "../../services/apiPosts";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Post } from "@/types/allTypes";
+import { post } from "@/types/allTypes";
 
 export function useDeletePost() {
   const queryClient = useQueryClient();
@@ -12,16 +12,16 @@ export function useDeletePost() {
     onMutate: async (id: number) => {
       await queryClient.cancelQueries({ queryKey: queryKey });
 
-      const previousPosts = queryClient.getQueryData<Post[]>(queryKey);
+      const previousPosts = queryClient.getQueryData<post[]>(queryKey);
 
       const postsArray = [...(previousPosts || [])];
 
       const updatedArray = postsArray.filter(
-        (post: Post) => post.postId !== id
+        (post: post) => post.postId !== id
       );
 
       queryClient.setQueryData(queryKey, updatedArray);
-      toast.success("Post successfully deleted");
+      toast.success("post successfully deleted");
 
       return { previousPosts };
     },

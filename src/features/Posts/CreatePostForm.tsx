@@ -116,7 +116,10 @@ export default function CreatePostForm({
   const title = form.watch("title");
   const content = form.watch("content");
 
-  const handleSubmit = (values: z.infer<typeof formSchema>, e) => {
+  const handleSubmit = (
+    values: z.infer<typeof formSchema>,
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     const currentDate = new Date();
     const newPost: newPost = {
       title: values.title,

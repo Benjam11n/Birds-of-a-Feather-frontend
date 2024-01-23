@@ -48,7 +48,10 @@ function EditAvatarForm() {
 
   if (isLoading) return <Spinner />;
 
-  const handleSubmit = (values: z.infer<typeof formSchema>, e) => {
+  const handleSubmit = (
+    values: z.infer<typeof formSchema>,
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     if (typeof values.avatarUrl === "undefined") return;
     const newUser: newUserAvatar = {
       ID: currentUser.userId,
@@ -62,7 +65,9 @@ function EditAvatarForm() {
       <h1 className="font-semibold mb-6">Edit your Avatar</h1>
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(handleSubmit)}
+          onSubmit={(e) =>
+            form.handleSubmit((values) => handleSubmit(values, e))
+          }
           encType="multipart/form-data"
           className="flex w-full max-w-lg flex-col gap-4"
         >

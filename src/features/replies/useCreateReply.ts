@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createReply as createReplyApi } from "../../services/apiReplies";
 import toast from "react-hot-toast";
-import { reply, newReply } from "@/types/allTypes";
+import { newReply } from "@/types/allTypes";
 
 export function useCreateReply(parentId: number) {
   const queryClient = useQueryClient();
@@ -12,7 +12,7 @@ export function useCreateReply(parentId: number) {
     onMutate: async (newReply: newReply) => {
       await queryClient.cancelQueries({ queryKey: queryKey });
 
-      const previousReplies = queryClient.getQueryData<reply[]>(queryKey);
+      const previousReplies = queryClient.getQueryData<newReply[]>(queryKey);
 
       const repliesArray = [...(previousReplies || [])];
       repliesArray.push(newReply);

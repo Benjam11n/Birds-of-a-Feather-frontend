@@ -1,18 +1,25 @@
 import toast from "react-hot-toast";
 import { createFollow as createFollowApi } from "../../services/apiFollows";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { users } from "@/types/allTypes";
 
 export function useCreateFollow() {
   const queryClient = useQueryClient();
   const queryKey = ["follows"];
 
-  const { mutate: createFollow, status } = useMutation<void, Error, number>({
+  const { mutate: createFollow, status } = useMutation<
+    void,
+    Error,
+    number,
+    { previousfollows: { userId: number; createdAt: string }[] }
+  >({
     mutationFn: createFollowApi,
     onMutate: async (followeeId: number) => {
       await queryClient.cancelQueries({ queryKey: queryKey });
 
-      const previousFollows = queryClient.getQueryData<users[]>(queryKey);
+      const previousFollows =
+        queryClient.getQueryData<{ userId: number; createdAt: string }[]>(
+          queryKey
+        );
 
       const updatedArray = [...(previousFollows || [])];
       const newFollow = {

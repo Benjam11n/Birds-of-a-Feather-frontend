@@ -1,4 +1,4 @@
-import { Post } from "@/types/allTypes";
+import { post } from "@/types/allTypes";
 import { usePosts } from "../Posts/usePosts";
 import { useCurrentUser } from "./useCurrentUser";
 import Stats from "@/ui/Stats";
@@ -10,15 +10,15 @@ function AccountStatistics() {
   const { currentUser } = useCurrentUser();
   const { userId } = currentUser;
   const creatorPosts =
-    posts?.filter((post: Post) => post.userId === userId) || [];
+    posts?.filter((post: post) => post.userId === userId) || [];
 
   const numCreatorPosts: number = creatorPosts?.length;
   const numUpvotes: number = creatorPosts
-    ? creatorPosts.reduce((acc: number, post: Post) => post.votes + acc, 0)
+    ? creatorPosts.reduce((acc: number, post: post) => post.votes + acc, 0)
     : 0;
 
   const numViews: number = creatorPosts
-    ? creatorPosts.reduce((acc: number, post: Post) => post.views + acc, 0)
+    ? creatorPosts.reduce((acc: number, post: post) => post.views + acc, 0)
     : 0;
 
   const numDays: string = Math.floor(

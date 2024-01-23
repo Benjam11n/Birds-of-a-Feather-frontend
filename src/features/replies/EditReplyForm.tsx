@@ -40,7 +40,7 @@ const formSchema = z
 export default function EditReplyForm({ replyToEdit }: { replyToEdit: reply }) {
   const { editReply, status } = useEditReply(replyToEdit.parentId);
   const isEditingReply: boolean = status === "pending";
-  const { parentId, ID: replyId, content } = replyToEdit;
+  const { parentId, ID: replyId, content, imagesUrl } = replyToEdit;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -65,6 +65,7 @@ export default function EditReplyForm({ replyToEdit }: { replyToEdit: reply }) {
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
     const newReply: newReply = {
       content: values.content,
+      imagesUrl,
       parentId,
       CreatedAt: new Date().toISOString(),
     };

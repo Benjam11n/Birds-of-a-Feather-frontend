@@ -98,8 +98,6 @@ export default function CreateCommunityForm() {
     e.preventDefault();
 
     const currentDate = new Date();
-
-    // Assuming 'communityIcon' is an input element (type="file")
     const iconFile = (
       e.currentTarget.elements.namedItem("communityIcon") as HTMLInputElement
     )?.files?.[0];
@@ -132,7 +130,9 @@ export default function CreateCommunityForm() {
           <Form {...form}>
             <form
               encType="multipart/form-data"
-              onSubmit={form.handleSubmit(handleSubmit)}
+              onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+                form.handleSubmit((values) => handleSubmit(values, e))
+              }
               className="flex w-full max-w-md flex-col gap-4"
             >
               <FormField

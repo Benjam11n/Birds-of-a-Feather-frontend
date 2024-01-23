@@ -50,7 +50,7 @@ function FypTable() {
         <AdditionalInformation popularCommunities={sortedCommunities} />
       </div>
       <div>
-        <Pagination />
+        <Pagination count={1} />
       </div>
     </div>
   );

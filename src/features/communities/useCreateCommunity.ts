@@ -1,5 +1,5 @@
 import { createCommunity as createCommunityApi } from "@/services/apiCommunities";
-import { community } from "@/types/allTypes";
+import { newCommunity } from "@/types/allTypes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
@@ -9,11 +9,11 @@ export function useCreateCommunity() {
 
   const { mutate: createCommunity, status } = useMutation({
     mutationFn: createCommunityApi,
-    onMutate: async (newCommunity: community) => {
+    onMutate: async (newCommunity: newCommunity) => {
       await queryClient.cancelQueries({ queryKey: queryKey });
 
       const previousCommunities =
-        queryClient.getQueryData<community[]>(queryKey);
+        queryClient.getQueryData<newCommunity[]>(queryKey);
 
       const updatedArray = [...(previousCommunities || [])];
       updatedArray.push(newCommunity);
