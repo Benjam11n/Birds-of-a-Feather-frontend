@@ -18,7 +18,7 @@ function CommunityRow({
   ranking: number;
 }) {
   const { title, ID, description } = community;
-  const { communityMembers, isLoading } = useCommunityMembers(ID);
+  const { communityMembers, isLoading } = useCommunityMembers(ID || 0);
   if (isLoading) return <Spinner />;
   return (
     <Card className="hover:bg-accent">

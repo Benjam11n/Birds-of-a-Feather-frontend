@@ -124,7 +124,7 @@ export default function CreatePostForm({
     const newPost: newPost = {
       title: values.title,
       content: values.content,
-      imagesUrl: e.target.imagesUrl.files[0],
+      imagesUrl: (e.target as HTMLFormElement).imagesUrl.files[0],
       CreatedAt: currentDate.toISOString(),
       communityId: communityId,
       tags: values.tags || "",
@@ -150,7 +150,7 @@ export default function CreatePostForm({
           <Form {...form}>
             <form
               encType="multipart/form-data"
-              onSubmit={form.handleSubmit(handleSubmit)}
+              onSubmit={(e) => handleSubmit(form.getValues(), e)}
               className="flex w-full max-w-md flex-col gap-4"
             >
               <FormField

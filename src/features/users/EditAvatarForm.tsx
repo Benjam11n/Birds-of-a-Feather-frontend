@@ -55,7 +55,7 @@ function EditAvatarForm() {
     if (typeof values.avatarUrl === "undefined") return;
     const newUser: newUserAvatar = {
       ID: currentUser.userId,
-      avatarUrl: e.target.avatarUrl.files[0],
+      avatarUrl: (e.target as HTMLFormElement).avatarUrl.files[0],
     };
     updateUserAvatar({ userId: ID, newUser });
   };

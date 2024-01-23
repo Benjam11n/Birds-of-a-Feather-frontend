@@ -29,7 +29,7 @@ export function useDeleteFollow(followeeId: number) {
 
       toast.success("Unfollowed successfully");
 
-      return { previousFollowings };
+      return { previousFollowings: updatedArray };
     },
     onError: (_, __, context) => {
       queryClient.setQueryData(queryKey, () => context?.previousFollowings);

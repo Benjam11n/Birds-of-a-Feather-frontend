@@ -69,7 +69,7 @@ export default function CreateReplyForm({ postId }: { postId: number }) {
     const newReply: newReply = {
       content: values.content,
       parentId: postId,
-      imagesUrl: e.target.imagesUrl.files[0],
+      imagesUrl: (e.target as HTMLFormElement).imagesUrl.files[0],
       CreatedAt: new Date().toISOString(),
     };
     createReply(newReply);
@@ -80,7 +80,7 @@ export default function CreateReplyForm({ postId }: { postId: number }) {
       <Form {...form}>
         <form
           encType="multipart/form-data"
-          onSubmit={form.handleSubmit(handleSubmit)}
+          onSubmit={(e) => handleSubmit(form.getValues(), e)}
           className="max-w-md w-full flex flex-col gap-4"
         >
           <FormField

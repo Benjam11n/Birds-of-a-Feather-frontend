@@ -30,10 +30,11 @@ export function useCreateFollow() {
       queryClient.setQueryData(queryKey, updatedArray);
       toast.success("Followed successfully");
 
-      return { previousFollows };
+      // Return an object with the correct property name
+      return { previousfollows: updatedArray };
     },
     onError: (_, __, context) => {
-      queryClient.setQueryData(queryKey, () => context?.previousFollows);
+      queryClient.setQueryData(queryKey, () => context?.previousfollows);
       toast.error("Error creating follows");
     },
     onSettled: () => {

@@ -33,7 +33,7 @@ import {
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateCommunity } from "./useCreateCommunity";
-import { useEffect } from "react";
+import { FormEvent, useEffect } from "react";
 
 const formSchema = z
   .object({
@@ -93,23 +93,17 @@ export default function CreateCommunityForm() {
 
   const handleSubmit = (
     values: z.infer<typeof formSchema>,
-    e: React.FormEvent<HTMLFormElement>
+    e: FormEvent<HTMLFormElement>
   ) => {
-    e.preventDefault();
-
     const currentDate = new Date();
-    const iconFile = (
-      e.currentTarget.elements.namedItem("communityIcon") as HTMLInputElement
-    )?.files?.[0];
-
     const newCommunity: newCommunity = {
       title: values.title,
       description: values.description,
       CreatedAt: currentDate.toISOString(),
-      iconUrl: iconFile || "",
+      iconUrl: (e.target as HTMLFormElement).communityIcon.files[0] || "",
+
       category: values.category || "",
     };
-
     createCommunity(newCommunity);
   };
 
@@ -130,9 +124,7 @@ export default function CreateCommunityForm() {
           <Form {...form}>
             <form
               encType="multipart/form-data"
-              onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-                form.handleSubmit((values) => handleSubmit(values, e))
-              }
+              onSubmit={(e) => handleSubmit(form.getValues(), e)}
               className="flex w-full max-w-md flex-col gap-4"
             >
               <FormField

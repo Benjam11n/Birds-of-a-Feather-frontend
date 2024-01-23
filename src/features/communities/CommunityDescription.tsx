@@ -35,7 +35,7 @@ function CommunityDescription({ community }: { community: community }) {
         <div className="text-muted-foreground mb-2">
           {communityMembers?.length || 0} members
         </div>
-        {community.userId === currentUser.userId && (
+        {community.userId === currentUser.ID && (
           <div className="space-x-1">
             <EditCommunityModal communityToEdit={community} />
 
