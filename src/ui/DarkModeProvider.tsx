@@ -20,7 +20,7 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-export function DarkModeProvider({
+export default function DarkModeProvider({
   children,
   defaultTheme = "system",
   storageKey = "vite-ui-theme",
