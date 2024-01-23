@@ -1,19 +1,9 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { FiChevronDown, FiHome, FiSmile, FiUsers } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
+import { FiHome, FiSmile, FiUsers } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { GrGroup } from "react-icons/gr";
 
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { useState } from "react";
-
 function MainNav() {
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
-
   return (
     <div className="px-4 py-3">
       <nav>

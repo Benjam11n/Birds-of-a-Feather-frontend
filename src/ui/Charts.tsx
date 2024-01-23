@@ -9,10 +9,10 @@ import {
   YAxis,
 } from "recharts";
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
-import { Post } from "@/types/allTypes";
+import { post } from "@/types/allTypes";
 import { useSearchParams } from "react-router-dom";
 
-function Charts({ creatorPosts }: { creatorPosts: Post[] }) {
+function Charts({ creatorPosts }: { creatorPosts: post[] }) {
   const { theme } = useTheme();
   const isDarkMode = theme === "dark";
   const [searchParams] = useSearchParams();
@@ -27,11 +27,11 @@ function Charts({ creatorPosts }: { creatorPosts: Post[] }) {
     return {
       label: format(date, "MMM dd"),
       totalViews: creatorPosts
-        ?.filter((post) => isSameDay(date, new Date(post.createdAt)))
-        .reduce((acc: number, post: Post) => acc + post.views, 0),
+        ?.filter((post) => isSameDay(date, new Date(post.CreatedAt)))
+        .reduce((acc: number, post: post) => acc + post.views, 0),
       totalVotes: creatorPosts
-        ?.filter((post) => isSameDay(date, new Date(post.createdAt)))
-        .reduce((acc: number, post: Post) => acc + post.votes, 0),
+        ?.filter((post) => isSameDay(date, new Date(post.CreatedAt)))
+        .reduce((acc: number, post: post) => acc + post.votes, 0),
     };
   });
 

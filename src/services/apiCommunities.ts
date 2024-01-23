@@ -25,7 +25,7 @@ export async function createCommunity(newCommunity: newCommunity) {
   const formData = new FormData();
   // Append all fields
   formData.append("Title", newCommunity.title);
-  formData.append("CreatedAt", newCommunity.createdAt);
+  formData.append("CreatedAt", newCommunity.CreatedAt);
   formData.append("Category", newCommunity.category);
   formData.append("Description", newCommunity.description);
   formData.append("iconUrl", newCommunity.iconUrl);

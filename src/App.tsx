@@ -18,7 +18,6 @@ import AccountDetails from "./features/users/AccountDetails";
 import Communities from "./pages/Communities";
 import Community from "./pages/Community";
 import EditAccount from "./pages/EditAccount";
-import Category from "./pages/Category";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,7 +45,6 @@ export default function App() {
               <Route path="dashboard" element={<DashBoard />} />
               <Route path="communities" element={<Communities />} />
               <Route path="communities/:communityId" element={<Community />} />
-              <Route path="categories/:category" element={<Category />} />
               <Route path="friends" element={<Friends />} />
               <Route path="fyp" element={<FYP />} />
               <Route path="editAccount" element={<EditAccount />} />

@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { createFollow as createFollowApi } from "../../services/apiFollows";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Users } from "@/types/allTypes";
+import { users } from "@/types/allTypes";
 
 export function useCreateFollow() {
   const queryClient = useQueryClient();
@@ -12,7 +12,7 @@ export function useCreateFollow() {
     onMutate: async (followeeId: number) => {
       await queryClient.cancelQueries({ queryKey: queryKey });
 
-      const previousFollows = queryClient.getQueryData<Users[]>(queryKey);
+      const previousFollows = queryClient.getQueryData<users[]>(queryKey);
 
       const updatedArray = [...(previousFollows || [])];
       const newFollow = {

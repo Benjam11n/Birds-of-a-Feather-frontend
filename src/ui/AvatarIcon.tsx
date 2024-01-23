@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users } from "@/types/allTypes";
+import { users } from "@/types/allTypes";
 
-function AvatarIcon({ user }: { user: Users }) {
+function AvatarIcon({ user }: { user: users }) {
   if (!user) return;
   const { name, avatarUrl } = user;
 

@@ -91,15 +91,27 @@ export default function CreateCommunityForm() {
 
   const title = form.watch("title");
 
-  const handleSubmit = (values: z.infer<typeof formSchema>, e) => {
+  const handleSubmit = (
+    values: z.infer<typeof formSchema>,
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
     const currentDate = new Date();
+
+    // Assuming 'communityIcon' is an input element (type="file")
+    const iconFile = (
+      e.currentTarget.elements.namedItem("communityIcon") as HTMLInputElement
+    )?.files?.[0];
+
     const newCommunity: newCommunity = {
       title: values.title,
       description: values.description,
       CreatedAt: currentDate.toISOString(),
-      iconUrl: e.target.communityIcon.files[0] || "",
+      iconUrl: iconFile || "",
       category: values.category || "",
     };
+
     createCommunity(newCommunity);
   };
 
