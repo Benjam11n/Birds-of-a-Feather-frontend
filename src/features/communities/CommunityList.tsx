@@ -24,22 +24,22 @@ function CommunityList() {
   if (isLoadingCommunities || isLoadingCommunityMembers) return <Spinner />;
   return (
     <div className="grid grid-cols-[1fr_auto] space-y-2 space-x-4">
-      {(sortedCommunities?.length || 0) > 0 ? (
-        sortedCommunities?.map((community: community, index: number) => (
-          <div className="space-y-3">
-            <h1 className="mb-6 mt-8 flex justify-center font-semibold col-span-2">
-              Top Communities of Birds of a feather
-            </h1>
+      <div className="space-y-3">
+        <h1 className="mb-6 mt-8 flex justify-center font-semibold col-span-2">
+          Top Communities of Birds of a feather
+        </h1>
+        {(sortedCommunities?.length || 0) > 0 ? (
+          sortedCommunities?.map((community: community, index: number) => (
             <CommunityRow
               community={community}
               ranking={index + 1}
               key={community.ID}
             />
-          </div>
-        ))
-      ) : (
-        <CommunityNotFound />
-      )}
+          ))
+        ) : (
+          <CommunityNotFound />
+        )}
+      </div>
       <div className="ml-6 mr-24 pt-16">
         <CreateCommunity />
       </div>

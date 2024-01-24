@@ -58,7 +58,7 @@ export interface newUserAvatar {
 export interface newUserPassword {
   email: string;
   oldPassword: string;
-  password: string;
+  newPassword: string;
 }
 
 export interface newPost {

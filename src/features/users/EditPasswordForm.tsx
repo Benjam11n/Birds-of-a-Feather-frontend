@@ -66,7 +66,7 @@ function EditPasswordForm() {
     const newUser: newUserPassword = {
       email,
       oldPassword: values.currentPassword,
-      password: values.newPassword,
+      newPassword: values.newPassword,
     };
     updateUserPassword({ userId: ID, newUser });
   };

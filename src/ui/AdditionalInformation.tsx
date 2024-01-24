@@ -30,7 +30,7 @@ function AdditionalInformation({
         )}
         {user && <Label className="text-lg">{user.name}</Label>}
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-2">
         {popularCommunities &&
           popularCommunities?.map((community: community) => (
             <NavLink

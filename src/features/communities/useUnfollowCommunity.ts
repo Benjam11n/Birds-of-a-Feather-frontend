@@ -21,20 +21,23 @@ export function useUnfollowCommunity(communityId: number, userId: number) {
         (communityMember: communityMember) => communityMember.userId !== userId
       );
 
+      // optimistc update
       queryClient.setQueryData(queryKey, updatedArray);
 
       return { previousCommunityMemmbers };
     },
     onError: (_, __, context) => {
+      // set data back to original state if error occured
       queryClient.setQueryData(
         queryKey,
         () => context?.previousCommunityMemmbers
       );
-      toast.error("Error deleting communityMember");
+      toast.error("Failed to unfollow community");
+    },
+    onSuccess: () => {
+      toast.success("Unfollowed successfully");
     },
     onSettled: () => {
-      toast.success("deleted successfully");
-
       queryClient.invalidateQueries({
         queryKey: queryKey,
       });
