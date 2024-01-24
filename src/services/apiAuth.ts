@@ -11,6 +11,7 @@ export async function login(user: LoginUser) {
     body: JSON.stringify(user), // send the data as the body
   });
 
+  console.log(BACKEND_URL, response);
   if (!response.ok) throw new Error("Incorrect email or password");
   const { token } = await response.json();
   localStorage.setItem("token", token);
