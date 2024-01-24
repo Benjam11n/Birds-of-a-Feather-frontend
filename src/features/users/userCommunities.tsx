@@ -11,7 +11,7 @@ function UserCommunities() {
 
   return (
     <div>
-      Communities:
+      <div className="font-semibold mt-4">Communities:</div>
       <div>
         {communities &&
           communities.map((community: community) => (

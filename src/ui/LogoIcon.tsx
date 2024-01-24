@@ -6,7 +6,7 @@ function LogoIcon() {
     <div className="flex items-center gap-x-3">
       <NavLink to="/dashboard">
         <Avatar>
-          <AvatarImage src="Logo2.jpg" alt="@shadcn" />
+          <AvatarImage src="Logo.jpg" alt="logo" />
           <AvatarFallback>Header Logo</AvatarFallback>
         </Avatar>
       </NavLink>

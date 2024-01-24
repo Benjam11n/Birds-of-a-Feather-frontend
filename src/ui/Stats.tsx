@@ -19,22 +19,22 @@ function Stats({
       <Stat
         title="Number of Posts"
         value={numCreatorPosts}
-        icon={<MdOutlineLocalFireDepartment size={40} />}
+        icon={<MdOutlineLocalFireDepartment size={35} />}
       />
       <Stat
         title="Total Views"
         value={numViews}
-        icon={<LuMousePointerClick size={40} />}
+        icon={<LuMousePointerClick size={35} />}
       />
       <Stat
         title="Total Upvotes"
         value={numUpvotes}
-        icon={<FiThumbsUp size={40} />}
+        icon={<FiThumbsUp size={35} />}
       />
       <Stat
         title="Creator for"
         value={numDays}
-        icon={<FiCalendar size={40} />}
+        icon={<FiCalendar size={35} />}
       />
     </div>
   );

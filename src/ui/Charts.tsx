@@ -37,20 +37,20 @@ function Charts({ creatorPosts }: { creatorPosts: post[] }) {
 
   const colors = isDarkMode
     ? {
-        totalViews: { stroke: "#4f46e5", fill: "#4f46e5" },
-        totalVotes: { stroke: "#22c55e", fill: "#22c55e" },
-        text: "#e5e7eb",
-        background: "#18212f",
+        totalViews: { stroke: "#5850fd", fill: "#4b41ff" },
+        totalVotes: { stroke: "#7624ac", fill: "#7624ac" },
+        text: "#e3e3e3",
+        background: "#25182d",
       }
     : {
-        totalViews: { stroke: "#4f46e5", fill: "#c7d2fe" },
-        totalVotes: { stroke: "#16a34a", fill: "#dcfce7" },
-        text: "#374151",
+        totalViews: { stroke: "#4b41ff", fill: "#c7d2ff" },
+        totalVotes: { stroke: "#892cc7", fill: "#fee4ff" },
+        text: "#272e39",
         background: "#fff",
       };
 
   return (
-    <div className="col-span-3 rounded-md bg-accent px-8 py-6">
+    <div className="col-span-3 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition duration-300 px-8 py-6">
       <h2 className="mb-4 text-xl font-bold">
         Views/ Votes from {format(dateIntervals.at(0) || "", "MMM dd yyyy")}{" "}
         &mdash; {format(dateIntervals.at(-1) || "", "MMM dd yyyy")}

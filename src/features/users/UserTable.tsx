@@ -1,6 +1,6 @@
 import Spinner from "../../ui/Spinner";
-import { useGetUser } from "./useUsers";
 import UserRow from "./UserRow";
+import { useGetUser } from "./useUsers";
 import { users } from "../../types/allTypes";
 import { useCurrentUser } from "./useCurrentUser";
 import { useFollowing } from "../following/useFollowing";
@@ -11,9 +11,7 @@ function UserTable() {
   const { followings } = useFollowing();
   if (isLoading) return <Spinner />;
 
-  const otherUsers = users?.filter(
-    (user: users) => user.ID !== currentUser.userId
-  );
+  const otherUsers = users?.filter((user: users) => user.ID !== currentUser.ID);
 
   const nonFollowedUsers = otherUsers?.filter((user: users) => {
     const followedUserId = followings?.map((following) => following.ID);

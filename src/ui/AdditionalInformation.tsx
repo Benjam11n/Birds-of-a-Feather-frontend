@@ -8,8 +8,6 @@ import {
 import { Label } from "@/components/ui/label";
 import { community, users } from "@/types/allTypes";
 import { useNavigate } from "react-router-dom";
-import { useFollowing } from "@/features/following/useFollowing";
-import Spinner from "./Spinner";
 import UserCommunities from "@/features/users/userCommunities";
 
 function AdditionalInformation({
@@ -21,19 +19,14 @@ function AdditionalInformation({
   user?: users | undefined;
 }) {
   const navigate = useNavigate();
-  const { followings, isLoading } = useFollowing();
-
-  if (isLoading) return <Spinner />;
-  // calculate the number of followers
-  const followerNum: number =
-    followings?.filter((following: users) => following.ID === user?.ID)
-      .length || 0;
 
   return (
     <Card className="w-[300px]">
       <CardHeader>
-        {popularCommunities && <Label>POPULAR COMMUNITIES</Label>}
-        {user && <Label>{user.name}</Label>}
+        {popularCommunities && (
+          <Label className="text-lg">Popular Communities</Label>
+        )}
+        {user && <Label className="text-lg">{user.name}</Label>}
       </CardHeader>
       <CardContent>
         {popularCommunities &&
@@ -51,7 +44,11 @@ function AdditionalInformation({
         {user && <UserCommunities />}
       </CardContent>
       <CardFooter className="flex justify-between">
-        {user && <div>Followers: {followerNum}</div>}
+        {user && (
+          <Button onClick={() => navigate("/editAccount")}>
+            Update your account
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );

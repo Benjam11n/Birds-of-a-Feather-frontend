@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useFollowing } from "@/features/following/useFollowing";
 import { users } from "@/types/allTypes";
 import { format } from "date-fns";
+import { BACKEND_URL } from "@/utils/constants";
 
 function AccountLayout() {
   const navigate = useNavigate();
@@ -29,9 +30,9 @@ function AccountLayout() {
         </Button>
       </div>
 
-      <div className="just col-span-2 flex items-center gap-6 border-b border-border px-4 py-8">
+      <div className="just col-span-2 items-center gap-6 border-b border-border px-4 py-8 grid grid-rows-[auto_1fr] grid-cols-[auto_auto_auto_auto_1fr]">
         <Avatar className="h-24 w-24">
-          <AvatarImage src={"http://localhost:8080" + avatarUrl}></AvatarImage>
+          <AvatarImage src={BACKEND_URL + avatarUrl}></AvatarImage>
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <h1 className="text-3xl">{name}</h1>
@@ -39,10 +40,14 @@ function AccountLayout() {
           Joined since: {format(CreatedAt, "MMMM dd yyyy")}
         </h2>
         <h2 className="text-muted-foreground">Followers: {followerNumber}</h2>
-        <Button onClick={() => navigate("/editAccount")}>
+        <Button
+          onClick={() => navigate("/editAccount")}
+          className="w-[180px]"
+          variant="outline"
+        >
           Update your account
         </Button>
-        <h3>{userBio}</h3>
+        <h3 className="col-span-5 text-lg ml-32 mr-48">{userBio}</h3>
       </div>
 
       <main className="mx-4 my-4">

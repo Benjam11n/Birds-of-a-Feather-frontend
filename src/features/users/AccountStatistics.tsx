@@ -22,7 +22,7 @@ function AccountStatistics() {
     : 0;
 
   const numDays: string = Math.floor(
-    (new Date().getTime() - new Date(currentUser?.createdAt).getTime()) /
+    (new Date().getTime() - new Date(currentUser?.CreatedAt).getTime()) /
       (24 * 60 * 60 * 1000)
   ).toString(); // 24 hours, 60 minutes, 60 seconds, 1000 milliseconds
 

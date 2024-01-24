@@ -10,10 +10,10 @@ function Stat({
   value: string | number;
 }) {
   return (
-    <div className="grid grid-cols-[5.4rem_1fr] grid-rows-[auto_auto] gap-y-2 rounded-md bg-accent p-[1.6rem]">
-      <div className="row-span-2 flex items-center justify-center">{icon}</div>
-      <h5 className="text-md font-semibold">{title}</h5>
-      <p>{value?.toString()}</p>
+    <div className="flex flex-col items-center p-4 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition duration-300">
+      <div className="my-2">{icon}</div>
+      <h5 className="text-lg font-semibold mb-1">{title}</h5>
+      <p className="text-md font-semibold">{value?.toString()}</p>
     </div>
   );
 }
