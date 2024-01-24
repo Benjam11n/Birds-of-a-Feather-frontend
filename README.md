@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/benjam11n/Birds-of-a-Feather-frontend">
-    <img src="./public/Logo.jpg" alt="Logo" width="120" height="120">
+    <img src="./public/Logo.jpg" alt="Logo" width="200" height="200" style="border-radius: 50%;">
   </a>
 
   <h3 align="center">Birds of a Feather</h3>
@@ -67,8 +67,11 @@ The feature set includes fundamental CRUD operations for data manipulation, as w
 
 ## Getting Started
 
-Both the frontend and the backend are hosted on Digital Ocean, and the link for the frontend is listed below. Additional usage instructions can be found in the Usage section below.
-[https://birds-of-a-feather-c5xki.ondigitalocean.app](https://birds-of-a-feather-c5xki.ondigitalocean.app)
+Both the frontend and backend are hosted on Digital Ocean. You can access the frontend using the following link:
+
+[**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
+
+For additional usage instructions, refer to the details provided in the Usage section below.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -79,7 +82,7 @@ Both the frontend and the backend are hosted on Digital Ocean, and the link for 
 1. **Logging in and Signing up:**
 
    - Upon entering the application, you'll be redirected to the login page.
-   - Use the default login details (email: example@example.com, password: password) or sign up.
+   - Use the default login details (email: example@example.com, password: password) or sign up by clicking on the sign up tab.
 
 2. **Joining a Community:**
 
@@ -120,6 +123,9 @@ Both the frontend and the backend are hosted on Digital Ocean, and the link for 
 
 9. **Miscellaneous:**
    - Toggle dark mode/light mode using the middle button on the top right.
+   - Filter/sort the posts by using the Filter and sort buttons on the top right of the application just below the header.
+   - Search for posts using the search bar on the top of the application
+   - Sign out using the sign out button on the top right of the application
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -127,9 +133,12 @@ Both the frontend and the backend are hosted on Digital Ocean, and the link for 
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+- **Telegram**: @benjaminwjy
+- **Email**: ben.wang9000@gmail.com
 
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+
+Website link: [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -139,9 +148,6 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
 - [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
