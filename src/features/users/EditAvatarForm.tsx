@@ -65,9 +65,7 @@ function EditAvatarForm() {
       <h1 className="font-semibold mb-6">Edit your Avatar</h1>
       <Form {...form}>
         <form
-          onSubmit={(e) =>
-            form.handleSubmit((values) => handleSubmit(values, e))
-          }
+          onSubmit={(e) => handleSubmit(form.getValues(), e)}
           encType="multipart/form-data"
           className="flex w-full max-w-lg flex-col gap-4"
         >
