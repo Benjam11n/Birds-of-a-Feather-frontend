@@ -89,14 +89,12 @@ function PostTable() {
         );
       } else if (field === "votes") {
         const aVotesValue: number = (
-          postVotes?.filter(
-            (postVote: postVote) => postVote.postId === a.postId
-          ) || []
+          postVotes?.filter((postVote: postVote) => postVote.postId === a.ID) ||
+          []
         ).reduce((acc, postVote) => acc + postVote.voteValue, 0);
         const bVotesValue: number = (
-          postVotes?.filter(
-            (postVote: postVote) => postVote.postId === b.postId
-          ) || []
+          postVotes?.filter((postVote: postVote) => postVote.postId === b.ID) ||
+          []
         ).reduce((acc, postVote) => acc + postVote.voteValue, 0);
 
         return (aVotesValue - bVotesValue) * modifier;
