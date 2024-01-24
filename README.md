@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/benjam11n/Birds-of-a-Feather-frontend">
-    <img src="/Logo.jpg" alt="Logo" width="80" height="80">
+    <img src="./public/Logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Birds of a Feather</h3>
