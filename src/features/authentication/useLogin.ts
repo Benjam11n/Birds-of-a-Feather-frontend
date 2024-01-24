@@ -23,8 +23,8 @@ export function useLogin() {
       navigate("/dashboard", { replace: true });
       toast.success("Successfully logged in");
     },
-    onError: (err) => {
-      toast.error(err.message);
+    onError: () => {
+      toast.error("Incorrect email or password");
     },
   });
 
