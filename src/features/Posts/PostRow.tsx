@@ -31,7 +31,7 @@ function PostRow({ post }: { post: post }) {
           </AccordionTrigger>
 
           <PostOperations post={post} currentUser={currentUser} />
-          {replies && (
+          {replies?.length > 0 && (
             <AccordionContent>
               <ReplyTable post={post} />
             </AccordionContent>

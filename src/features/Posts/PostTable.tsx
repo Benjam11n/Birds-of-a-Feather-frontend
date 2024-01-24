@@ -7,8 +7,9 @@ import { PAGE_SIZE } from "../../utils/constants";
 import { post, postVote } from "../../types/allTypes";
 import AdditionalInformation from "@/ui/AdditionalInformation";
 import { useCommunities } from "../communities/useCommunities";
-import { useAllCommuntiyMembers } from "../communities/useAllCommunityMembers";
+import { useAllCommunityMembers } from "../communities/useAllCommunityMembers";
 import { useAllPostVotes } from "./useAllPostVotes";
+import PostNotFound from "./PostNotFound";
 
 function PostTable() {
   const [searchParams] = useSearchParams();
@@ -18,7 +19,7 @@ function PostTable() {
   const { isLoading: isLoadingPosts, posts } = usePosts();
 
   const { isLoading: isLoadingCommunityMembers, communityMembers } =
-    useAllCommuntiyMembers();
+    useAllCommunityMembers();
   if (!posts) return; // change this
 
   const sortedCommunities = communities?.sort((a, b) => {
@@ -131,10 +132,13 @@ function PostTable() {
   return (
     <div className="grid grid-cols-[1fr_auto] space-y-2">
       <div>
-        {paginatedPosts &&
+        {(paginatedPosts?.length || 0) > 0 ? (
           paginatedPosts?.map((post: post) => (
             <PostRow post={post} key={post.ID} />
-          ))}
+          ))
+        ) : (
+          <PostNotFound />
+        )}
       </div>
 
       <div className="ml-6 mr-24 mt-12">

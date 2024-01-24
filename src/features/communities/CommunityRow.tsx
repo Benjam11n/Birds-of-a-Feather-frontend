@@ -9,6 +9,7 @@ import { community } from "@/types/allTypes";
 import { NavLink } from "react-router-dom";
 import { useCommunityMembers } from "./useCommunityMembers";
 import Spinner from "@/ui/Spinner";
+import { BACKEND_URL } from "@/utils/constants";
 
 function CommunityRow({
   community,
@@ -31,10 +32,7 @@ function CommunityRow({
             {ranking}
           </CardTitle>
           <Avatar className="row-span-2 flex h-16 w-16">
-            <AvatarImage
-              src={"http://localhost:8080" + community.iconUrl}
-              alt="name"
-            />
+            <AvatarImage src={BACKEND_URL + community.iconUrl} alt="name" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <CardTitle className="ml-4 mt-2">{title}</CardTitle>

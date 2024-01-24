@@ -9,6 +9,7 @@ import { useUnfollowCommunity } from "./useUnfollowCommunity";
 import { Badge } from "@/components/ui/badge";
 import CreatePostForm from "../Posts/CreatePostForm";
 import { community, communityMember } from "@/types/allTypes";
+import { BACKEND_URL } from "@/utils/constants";
 
 function CommunityHeader({ community }: { community: community }) {
   // Destructuring community object
@@ -44,7 +45,7 @@ function CommunityHeader({ community }: { community: community }) {
       <CardContent>
         {/* Avatar Section */}
         <Avatar className="mt-6 h-24 w-24">
-          <AvatarImage src={"http://localhost:8080" + iconUrl} alt="name" />
+          <AvatarImage src={BACKEND_URL + iconUrl} alt="name" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </CardContent>

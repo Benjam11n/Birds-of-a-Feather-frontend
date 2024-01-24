@@ -1,7 +1,7 @@
 import { getAllCommunityMembers } from "@/services/apiCommunities";
 import { useQuery } from "@tanstack/react-query";
 
-export function useAllCommuntiyMembers() {
+export function useAllCommunityMembers() {
   const {
     isLoading,
     data: communityMembers,

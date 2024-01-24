@@ -22,6 +22,7 @@ import { useUpdateReplyVote } from "./useUpdateReplyVote";
 import { useGetUser } from "../users/useUsers";
 import AvatarIcon from "@/ui/AvatarIcon";
 import { usePost } from "../Posts/usePost";
+import { BACKEND_URL } from "@/utils/constants";
 
 function timeAgo(date: Date) {
   const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
@@ -134,7 +135,7 @@ function ReplyRow({ reply }: { reply: reply }) {
           {reply.imagesUrl && (
             <img
               className="rounded-md max-h-[300px] object-contain relative"
-              src={"http://localhost:8080" + reply.imagesUrl}
+              src={BACKEND_URL + reply.imagesUrl}
               alt="reply image"
             ></img>
           )}

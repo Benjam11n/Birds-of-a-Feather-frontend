@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/hover-card";
 import { CiCalendarDate } from "react-icons/ci";
 import { format } from "date-fns";
+import { BACKEND_URL } from "@/utils/constants";
 
 function PostUser({ postCreator }: { postCreator: users }) {
   const { userBio } = postCreator || "";
@@ -19,15 +20,13 @@ function PostUser({ postCreator }: { postCreator: users }) {
         </div>
       </HoverCardTrigger>
       <HoverCardContent>
-        <div className="flex justify-between space-x-4">
+        <div className="flex space-x-4">
           <Avatar>
-            <AvatarImage
-              src={"http://localhost:8080" + postCreator?.avatarUrl}
-            />
+            <AvatarImage src={BACKEND_URL + postCreator?.avatarUrl} />
             <AvatarFallback>VC</AvatarFallback>
           </Avatar>
           <div className="space-y-1">
-            <h4 className="text-sm font-semibold">{postCreator?.name}</h4>
+            <h4 className="text-md font-semibold">{postCreator?.name}</h4>
             {userBio && <p className="text-sm">{userBio}</p>}
             <div className="flex items-center pt-2">
               <CiCalendarDate className="mr-2 h-4 w-4 opacity-70" />{" "}

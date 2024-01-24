@@ -3,12 +3,13 @@ import { useCommunities } from "./useCommunities";
 import { community } from "@/types/allTypes";
 import CommunityRow from "./CommunityRow";
 import CreateCommunity from "./CreateCommunity";
-import { useAllCommuntiyMembers } from "./useAllCommunityMembers";
+import { useAllCommunityMembers } from "./useAllCommunityMembers";
+import CommunityNotFound from "./CommunityNotFound";
 
 function CommunityList() {
   const { communities, isLoading: isLoadingCommunities } = useCommunities();
   const { isLoading: isLoadingCommunityMembers, communityMembers } =
-    useAllCommuntiyMembers();
+    useAllCommunityMembers();
 
   const sortedCommunities = communities?.sort((a, b) => {
     const aMembers = communityMembers?.filter(
@@ -23,19 +24,22 @@ function CommunityList() {
   if (isLoadingCommunities || isLoadingCommunityMembers) return <Spinner />;
   return (
     <div className="grid grid-cols-[1fr_auto] space-y-2 space-x-4">
-      <div className="space-y-3">
-        <h1 className="mb-6 mt-8 flex justify-center font-semibold col-span-2">
-          Top Communities of Birds of a feather
-        </h1>
-        {sortedCommunities &&
-          sortedCommunities.map((community: community, index: number) => (
+      {(sortedCommunities?.length || 0) > 0 ? (
+        sortedCommunities?.map((community: community, index: number) => (
+          <div className="space-y-3">
+            <h1 className="mb-6 mt-8 flex justify-center font-semibold col-span-2">
+              Top Communities of Birds of a feather
+            </h1>
             <CommunityRow
               community={community}
               ranking={index + 1}
               key={community.ID}
             />
-          ))}
-      </div>
+          </div>
+        ))
+      ) : (
+        <CommunityNotFound />
+      )}
       <div className="ml-6 mr-24 pt-16">
         <CreateCommunity />
       </div>

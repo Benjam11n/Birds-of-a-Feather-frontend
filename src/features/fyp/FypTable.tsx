@@ -6,7 +6,8 @@ import { useFollowing } from "../following/useFollowing";
 import AdditionalInformation from "@/ui/AdditionalInformation";
 import { useCommunities } from "../communities/useCommunities";
 import Pagination from "@/ui/Pagination";
-import { useAllCommuntiyMembers } from "../communities/useAllCommunityMembers";
+import { useAllCommunityMembers } from "../communities/useAllCommunityMembers";
+import PostNotFound from "../Posts/PostNotFound";
 
 function FypTable() {
   const { posts, isLoading } = usePosts();
@@ -19,7 +20,7 @@ function FypTable() {
   });
 
   const { isLoading: isLoadingCommunityMembers, communityMembers } =
-    useAllCommuntiyMembers();
+    useAllCommunityMembers();
 
   const sortedCommunities = communities?.sort((a, b) => {
     const aMembers = communityMembers?.filter(
@@ -42,9 +43,13 @@ function FypTable() {
   return (
     <div className="grid grid-cols-[1fr_auto] space-y-2">
       <div>
-        {followingPosts?.map((post: post) => {
-          return <PostRow post={post} />;
-        })}
+        {(followingPosts?.length || 0) > 0 ? (
+          followingPosts?.map((post: post) => {
+            return <PostRow post={post} />;
+          })
+        ) : (
+          <PostNotFound />
+        )}
       </div>
       <div className="ml-6 mr-24 mt-12">
         <AdditionalInformation popularCommunities={sortedCommunities} />

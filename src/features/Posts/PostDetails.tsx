@@ -5,6 +5,7 @@ import { timeAgo } from "@/utils/timeAgo";
 import { usePostVotes } from "./usePostVotes";
 import Spinner from "@/ui/Spinner";
 import { useCommunityById } from "../communities/useCommunityById";
+import { BACKEND_URL } from "@/utils/constants";
 
 function PostDetails({
   postCreator,
@@ -56,7 +57,7 @@ function PostDetails({
       {post.imagesUrl && (
         <img
           className="col-span-5 rounded-md max-h-[500px] object-contain relative"
-          src={"http://localhost:8080" + post.imagesUrl}
+          src={BACKEND_URL + post.imagesUrl}
           alt="post image"
         ></img>
       )}

@@ -7,8 +7,10 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { community, users } from "@/types/allTypes";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import UserCommunities from "@/features/users/userCommunities";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { BACKEND_URL } from "@/utils/constants";
 
 function AdditionalInformation({
   popularCommunities,
@@ -31,14 +33,20 @@ function AdditionalInformation({
       <CardContent>
         {popularCommunities &&
           popularCommunities?.map((community: community) => (
-            <Button
-              variant="ghost"
-              className="flex w-full justify-start"
-              onClick={() => navigate(`/communities/${community.ID}`)}
+            <NavLink
+              to={`/communities/${community.ID}`}
+              className="flex w-full justify-start gap-3"
               key={community.ID}
             >
-              {community.title}
-            </Button>
+              <Avatar>
+                <AvatarImage
+                  src={BACKEND_URL + community.iconUrl}
+                  alt="community icon"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <div className="mt-1">{community.title}</div>
+            </NavLink>
           ))}
         {user && <div>{user.userBio}</div>}
         {user && <UserCommunities />}

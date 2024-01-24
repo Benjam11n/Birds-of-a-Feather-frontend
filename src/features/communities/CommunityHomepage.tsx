@@ -10,6 +10,7 @@ import { useSearchParams } from "react-router-dom";
 import { PAGE_SIZE } from "@/utils/constants";
 import Pagination from "@/ui/Pagination";
 import CommunityDescription from "./CommunityDescription";
+import PostNotFound from "../Posts/PostNotFound";
 
 function CommunityHomepage() {
   const { community, isLoading: isLoadingCommunity } = useCommunity();
@@ -101,10 +102,13 @@ function CommunityHomepage() {
       <CommunityHeader community={community} />
       <div className="mx-4 my-4 space-y-3">
         <PostTableOperations />
-        {paginatedPosts &&
+        {(paginatedPosts?.length || 0) > 0 ? (
           paginatedPosts?.map((post: post) => (
             <PostRow post={post} key={post.ID} />
-          ))}
+          ))
+        ) : (
+          <PostNotFound />
+        )}
       </div>
       <div className="ml-6 mr-24 mt-3">
         <CommunityDescription community={community} />
