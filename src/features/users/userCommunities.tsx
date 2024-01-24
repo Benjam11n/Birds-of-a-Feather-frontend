@@ -1,12 +1,12 @@
 import Spinner from "@/ui/Spinner";
 import { useUserCommunities } from "./useUserCommunities";
 import { community } from "@/types/allTypes";
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { BACKEND_URL } from "@/utils/constants";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 function UserCommunities() {
   const { communities, isLoading } = useUserCommunities();
-  const navigate = useNavigate();
   if (isLoading) return <Spinner />;
 
   return (
@@ -16,15 +16,21 @@ function UserCommunities() {
       )}
       <div>
         {communities &&
-          communities.map((community: community) => (
-            <Button
+          communities?.map((community: community) => (
+            <NavLink
+              to={`/communities/${community.ID}`}
+              className="flex w-full justify-start gap-3 hover:bg-accent rounded-md"
               key={community.ID}
-              variant="ghost"
-              className="flex w-full justify-start"
-              onClick={() => navigate(`/communities/${community.ID}`)}
             >
-              {community.title}
-            </Button>
+              <Avatar>
+                <AvatarImage
+                  src={BACKEND_URL + community.iconUrl}
+                  alt="community icon"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <div className="mt-1">{community.title}</div>
+            </NavLink>
           ))}
       </div>
     </div>

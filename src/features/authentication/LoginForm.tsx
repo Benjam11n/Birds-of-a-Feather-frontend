@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { PasswordInput } from "@/components/ui/password-input";
 import { useEffect } from "react";
 import { useLogin } from "./useLogin";
+import Spinner from "@/ui/Spinner";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -45,6 +46,8 @@ export default function Login() {
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
     login(values);
   };
+
+  if (isLoggingIn) return <Spinner />;
 
   return (
     <main className="w-[320px]">

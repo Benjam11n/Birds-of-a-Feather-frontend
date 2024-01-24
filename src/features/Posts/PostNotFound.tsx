@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/ui/DarkModeProvider";
+import { BACKEND_URL } from "@/utils/constants";
 import { NavLink } from "react-router-dom";
 
 function PostNotFound() {
@@ -10,7 +11,7 @@ function PostNotFound() {
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">No Posts Available</h1>
         <img
-          src={`post_not_found_${theme}.jpg`}
+          src={`/post_not_found_${theme}.jpg`}
           alt="Illustration: No Posts Found"
           className="max-w-sm mx-auto mb-4 rounded-lg"
         />

@@ -30,12 +30,12 @@ function AdditionalInformation({
         )}
         {user && <Label className="text-lg">{user.name}</Label>}
       </CardHeader>
-      <CardContent className="space-y-2">
+      <CardContent className="space-y-3">
         {popularCommunities &&
           popularCommunities?.map((community: community) => (
             <NavLink
               to={`/communities/${community.ID}`}
-              className="flex w-full justify-start gap-3"
+              className="flex w-full justify-start gap-3 hover:bg-accent rounded-md"
               key={community.ID}
             >
               <Avatar>
@@ -48,7 +48,17 @@ function AdditionalInformation({
               <div className="mt-1">{community.title}</div>
             </NavLink>
           ))}
-        {user && <div>{user.userBio}</div>}
+        {user &&
+          (user.userBio ? (
+            <div>{user.userBio}</div>
+          ) : (
+            <div>
+              {" "}
+              We're glad you're here! While there's no bio available at the
+              moment, feel free to share more about yourself to personalize your
+              profile.
+            </div>
+          ))}
         {user && <UserCommunities />}
       </CardContent>
       <CardFooter className="flex justify-between">

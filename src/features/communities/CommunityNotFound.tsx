@@ -10,7 +10,7 @@ function CommunityNotFound() {
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">No Communities Available</h1>
         <img
-          src={`community_not_found_${theme}.jpg`}
+          src={`/community_not_found_${theme}.jpg`}
           alt="Illustration: No Posts Found"
           className="max-w-sm mx-auto mb-4 rounded-lg"
         />
