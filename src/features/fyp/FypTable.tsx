@@ -5,7 +5,6 @@ import { post, users } from "@/types/allTypes";
 import { useFollowing } from "../following/useFollowing";
 import AdditionalInformation from "@/ui/AdditionalInformation";
 import { useCommunities } from "../communities/useCommunities";
-import Pagination from "@/ui/Pagination";
 import { useAllCommunityMembers } from "../communities/useAllCommunityMembers";
 import PostNotFound from "../Posts/PostNotFound";
 
@@ -53,9 +52,6 @@ function FypTable() {
       </div>
       <div className="ml-6 mr-24 mt-12">
         <AdditionalInformation popularCommunities={sortedCommunities} />
-      </div>
-      <div>
-        <Pagination count={1} />
       </div>
     </div>
   );
