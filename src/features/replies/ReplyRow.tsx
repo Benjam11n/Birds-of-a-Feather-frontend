@@ -6,6 +6,7 @@ import { useVoteReply } from "./useVoteReply";
 import { reply, replyVote, users } from "../../types/allTypes";
 import {
   Card,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -132,6 +133,8 @@ function ReplyRow({ reply }: { reply: reply }) {
             <div>Created: {formattedDate}</div>
             <div>{edited ? "edited" : ""}</div>
           </CardDescription>
+        </CardHeader>
+        <CardContent>
           {reply.imagesUrl && (
             <img
               className="rounded-md max-h-[300px] object-contain relative"
@@ -140,7 +143,7 @@ function ReplyRow({ reply }: { reply: reply }) {
             ></img>
           )}
           <div className="pt-8">{content}</div>
-        </CardHeader>
+        </CardContent>
         <CardFooter className="flex flex-row justify-end">
           <div className="flex flex-row gap-1">
             {currentUser.ID === userId && (

@@ -14,7 +14,7 @@ function UserCommunities() {
       {communities?.length > 0 && (
         <div className="font-semibold mt-4">Communities:</div>
       )}
-      <div>
+      <div className="space-y-3 mt-3">
         {communities &&
           communities?.map((community: community) => (
             <NavLink

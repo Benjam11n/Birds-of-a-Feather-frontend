@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/ui/DarkModeProvider";
-import { BACKEND_URL } from "@/utils/constants";
 import { NavLink } from "react-router-dom";
 
 function PostNotFound() {

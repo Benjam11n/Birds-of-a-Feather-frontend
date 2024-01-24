@@ -40,6 +40,26 @@
       transform: rotate(360deg);
     }
   }
+  .image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    animation: jump 0.3s ease-in-out infinite alternate;
+  }
+  .image2 {
+    animation-delay: 0.1s;
+  }
+  .image3 {
+    animation-delay: 0.2s;
+  }
+  @keyframes jump {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-20px);
+    }
+  }
   .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
