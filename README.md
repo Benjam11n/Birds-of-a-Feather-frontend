@@ -29,7 +29,7 @@
 
 ## About The Project
 
- <img src="./public/dashboard.jpg" alt="Logo" height="240">
+ <img src="./public/dashboard.png" alt="Logo" height="240">
 
 **Note:** This README refers to the frontend of the project. This repository contains the source code for the Birds of a Feather forum's frontend. Created for the **CVWO summer project**, it is the result of approximately two months of learning web development, starting from ground zero since the end of last semester's exams.
 
