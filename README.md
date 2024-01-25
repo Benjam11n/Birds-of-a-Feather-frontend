@@ -105,17 +105,18 @@ For additional usage instructions, refer to the details provided in the Usage se
 
 5. **Replying:**
 
-   - Find the "Reply" button at the bottom right of each post/reply card.
+   - Click on a post you want to reply to to be redirected to the post.
+   - Find the "Reply" button at the bottom right of the post card.
    - Click to reply to a post.
 
 6. **Upvote/Downvote:**
 
-   - Use the upvote/downvote buttons at the bottom right of each post card.
+   - Use the upvote/downvote buttons at the bottom right of each post/ reply card.
 
 7. **Following and Unfollowing:**
 
    - Navigate to the Friends page via the left sidebar.
-   - Manage followers on the left and potential follows on the right.
+   - Manage followers on the left and potential followers on the right.
    - Click "Follow" or "Unfollow" accordingly.
 
 8. **Update Account Details:**
@@ -126,8 +127,9 @@ For additional usage instructions, refer to the details provided in the Usage se
 9. **Miscellaneous:**
    - Toggle dark mode/light mode using the middle button on the top right.
    - Filter/sort the posts by using the Filter and sort buttons on the top right of the application just below the header.
-   - Search for posts using the search bar on the top of the application
-   - Sign out using the sign out button on the top right of the application
+   - Search for posts using the search bar on the top of the application.
+   - Sign out using the sign out button on the top right of the application.
+   - Click on account statistics on the top right of the account homepage to see your account statistics.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
