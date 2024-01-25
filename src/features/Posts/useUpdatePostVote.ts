@@ -6,7 +6,15 @@ export function useUpdatePostVote(postId: number) {
   const queryClient = useQueryClient();
   const queryKey = ["postVotes", postId];
 
-  const { mutate: updatePostVote, status } = useMutation({
+  const { mutate: updatePostVote, status } = useMutation<
+    void,
+    Error,
+    {
+      id: number;
+      postVote: postVote;
+    },
+    { previousVotes: postVote[] | undefined }
+  >({
     mutationFn: updatePostApi,
     onMutate: async (variables) => {
       await queryClient.cancelQueries({ queryKey: queryKey });

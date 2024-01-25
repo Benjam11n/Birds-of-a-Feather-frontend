@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPosts } from "../../services/apiPosts";
+import { post } from "@/types/allTypes";
 // import { PAGE_SIZE } from "../../utils/constants";
 
 export function usePosts() {
@@ -8,7 +9,7 @@ export function usePosts() {
     isLoading,
     data: posts,
     error,
-  } = useQuery({
+  } = useQuery<post[], Error>({
     queryKey: ["posts"],
     queryFn: getPosts,
   });

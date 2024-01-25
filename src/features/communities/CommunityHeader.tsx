@@ -45,7 +45,12 @@ function CommunityHeader({ community }: { community: community }) {
       <CardContent>
         {/* Avatar Section */}
         <Avatar className="mt-6 h-24 w-24">
-          <AvatarImage src={BACKEND_URL + iconUrl} alt="name" />
+          <AvatarImage
+            src={
+              iconUrl ? BACKEND_URL + iconUrl : "/default_community_logo.jpg"
+            }
+            alt="name"
+          />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </CardContent>

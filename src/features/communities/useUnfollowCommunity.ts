@@ -3,11 +3,20 @@ import { communityMember } from "@/types/allTypes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
+interface ContextType {
+  previousCommunityMemmbers?: communityMember[];
+}
+
 export function useUnfollowCommunity(communityId: number, userId: number) {
   const queryClient = useQueryClient();
   const queryKey = ["communityMembers", communityId];
 
-  const { mutate: unfollowCommunity, status } = useMutation({
+  const { mutate: unfollowCommunity, status } = useMutation<
+    void,
+    Error,
+    number,
+    ContextType
+  >({
     mutationFn: deleteCommunityMember,
     onMutate: async () => {
       await queryClient.cancelQueries({ queryKey: queryKey });
@@ -32,10 +41,10 @@ export function useUnfollowCommunity(communityId: number, userId: number) {
         queryKey,
         () => context?.previousCommunityMemmbers
       );
-      toast.error("Failed to unfollow community");
+      toast.error("Failed to unfollow community. Please try again.");
     },
     onSuccess: () => {
-      toast.success("Unfollowed successfully");
+      toast.success("Unfollowed successfully.");
     },
     onSettled: () => {
       queryClient.invalidateQueries({

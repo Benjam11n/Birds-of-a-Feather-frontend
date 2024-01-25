@@ -1,4 +1,5 @@
 import { getCommunities } from "@/services/apiCommunities";
+import { community } from "@/types/allTypes";
 import { useQuery } from "@tanstack/react-query";
 
 export function useCommunities() {
@@ -7,7 +8,7 @@ export function useCommunities() {
     isLoading,
     data: communities,
     error,
-  } = useQuery({
+  } = useQuery<community[], Error>({
     queryKey: ["communities"],
     queryFn: getCommunities,
   });

@@ -16,13 +16,13 @@ export function useUpdateUser() {
   >({
     mutationFn: updateUserApi,
     onSuccess: () => {
-      toast.success("User successfully updated");
+      toast.success("User successfully updated.");
       queryClient.invalidateQueries({
         queryKey: ["currentUser"],
       });
     },
-    onError: (err) => {
-      toast.error("Unable to update user " + err.message);
+    onError: () => {
+      toast.error("Unable to update user. Please try again.");
     },
   });
 

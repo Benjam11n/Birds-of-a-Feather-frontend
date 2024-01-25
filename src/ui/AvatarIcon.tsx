@@ -9,7 +9,10 @@ function AvatarIcon({ user }: { user: users }) {
   return (
     <div className="my-3 flex items-center justify-start space-x-4">
       <Avatar>
-        <AvatarImage src={BACKEND_URL + avatarUrl} alt={name} />
+        <AvatarImage
+          src={avatarUrl ? BACKEND_URL + avatarUrl : "/default_avatar.jpg"}
+          alt={name}
+        />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       <h1 className="text-xl font-semibold">{name}</h1>

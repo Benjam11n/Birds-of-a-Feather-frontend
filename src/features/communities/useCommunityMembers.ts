@@ -1,4 +1,5 @@
 import { getCommunityMembers } from "@/services/apiCommunities";
+import { communityMember } from "@/types/allTypes";
 import { useQuery } from "@tanstack/react-query";
 
 export function useCommunityMembers(communityId: number) {
@@ -6,7 +7,7 @@ export function useCommunityMembers(communityId: number) {
     isLoading,
     data: communityMembers,
     error,
-  } = useQuery({
+  } = useQuery<communityMember[], Error>({
     queryKey: ["communityMembers", communityId],
     queryFn: () => getCommunityMembers(Number(communityId)),
   });

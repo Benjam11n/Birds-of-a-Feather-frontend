@@ -27,13 +27,14 @@ export function useDeleteFollow(followeeId: number) {
 
       queryClient.setQueryData(queryKey, updatedArray);
 
-      toast.success("Unfollowed successfully");
-
       return { previousFollowings: updatedArray };
+    },
+    onSuccess: () => {
+      toast.success("Unfollowed successfully.");
     },
     onError: (_, __, context) => {
       queryClient.setQueryData(queryKey, () => context?.previousFollowings);
-      toast.error("Error deleting user");
+      toast.error("Failed to unfollow. Please try again.");
     },
     onSettled: () => {
       queryClient.invalidateQueries({

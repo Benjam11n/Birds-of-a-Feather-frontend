@@ -22,7 +22,11 @@ function UserCommunities() {
             >
               <Avatar>
                 <AvatarImage
-                  src={BACKEND_URL + community.iconUrl}
+                  src={
+                    community.iconUrl
+                      ? BACKEND_URL + community.iconUrl
+                      : "/default_community_logo.jpg"
+                  }
                   alt="community icon"
                 />
                 <AvatarFallback>CN</AvatarFallback>

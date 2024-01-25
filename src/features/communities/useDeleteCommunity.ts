@@ -7,7 +7,7 @@ export default function useDeleteCommunity(communityId: number) {
   const queryClient = useQueryClient();
   const queryKey = ["communities", communityId];
   const navigate = useNavigate();
-  const { mutate: deleteCommunity, status } = useMutation({
+  const { mutate: deleteCommunity, status } = useMutation<void, Error, number>({
     mutationFn: deleteCommunityApi,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });

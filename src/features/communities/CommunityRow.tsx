@@ -32,7 +32,14 @@ function CommunityRow({
             {ranking}
           </CardTitle>
           <Avatar className="row-span-2 flex h-16 w-16">
-            <AvatarImage src={BACKEND_URL + community.iconUrl} alt="name" />
+            <AvatarImage
+              src={
+                community.iconUrl
+                  ? BACKEND_URL + community.iconUrl
+                  : "/default_community_logo.jpg"
+              }
+              alt="name"
+            />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <CardTitle className="ml-4 mt-2">{title}</CardTitle>

@@ -7,7 +7,12 @@ export function useDeletePost() {
   const queryClient = useQueryClient();
   const queryKey = ["posts"];
 
-  const { mutate: deletePost, status } = useMutation({
+  const { mutate: deletePost, status } = useMutation<
+    void,
+    Error,
+    number,
+    { previousPosts: post[] | undefined }
+  >({
     mutationFn: deletePostApi,
     onMutate: async (id: number) => {
       await queryClient.cancelQueries({ queryKey: queryKey });

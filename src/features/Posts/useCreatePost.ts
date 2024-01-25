@@ -7,7 +7,12 @@ export function useCreatePost() {
   const queryClient = useQueryClient();
   const queryKey = ["posts"];
 
-  const { mutate: createPost, status } = useMutation({
+  const { mutate: createPost, status } = useMutation<
+    void,
+    Error,
+    newPost,
+    { previousPosts: newPost[] | undefined }
+  >({
     mutationFn: createPostApi,
     onMutate: async (newPost: newPost) => {
       await queryClient.cancelQueries({ queryKey: queryKey });

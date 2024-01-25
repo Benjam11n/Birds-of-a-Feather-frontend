@@ -43,7 +43,7 @@ const formSchema = z
 
 export default function Login() {
   const { signUp, status } = useSignUp();
-  const isLoggingIn = status === "pending";
+  const isSigningIn = status === "pending";
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -152,8 +152,8 @@ export default function Login() {
             }}
           />
 
-          <Button type="submit" className="w-full" disabled={isLoggingIn}>
-            Sign up
+          <Button type="submit" className="w-full" disabled={isSigningIn}>
+            {isSigningIn ? "Signing in..." : "Sign up"}
           </Button>
         </form>
       </Form>

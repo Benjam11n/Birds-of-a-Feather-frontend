@@ -93,7 +93,7 @@ export default function Login() {
           />
 
           <Button type="submit" className="w-full" disabled={isLoggingIn}>
-            Log in
+            {isLoggingIn ? "Logging in..." : "Log in"}
           </Button>
         </form>
       </Form>

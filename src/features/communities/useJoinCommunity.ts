@@ -3,11 +3,20 @@ import { communityMember } from "@/types/allTypes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
+interface ContextType {
+  previousCommunityMembers?: communityMember[];
+}
+
 export function useJoinCommunity(communityId: number, userId: number) {
   const queryClient = useQueryClient();
   const queryKey = ["communityMembers", communityId];
 
-  const { mutate: joinCommunity, status } = useMutation({
+  const { mutate: joinCommunity, status } = useMutation<
+    void,
+    Error,
+    number,
+    ContextType
+  >({
     mutationFn: createCommunityMember,
     onMutate: async (communityId: number) => {
       await queryClient.cancelQueries({ queryKey: queryKey });
@@ -25,16 +34,17 @@ export function useJoinCommunity(communityId: number, userId: number) {
 
       return { previousCommunityMembers };
     },
+    onSuccess: () => {
+      toast.success("Successfully joined community.");
+    },
     onError: (_, __, context) => {
       queryClient.setQueryData(
         queryKey,
         () => context?.previousCommunityMembers
       );
-      toast.error("Error joining community");
+      toast.error("Failed to join community. Please try again.");
     },
     onSettled: () => {
-      toast.success("Joined successfully created");
-
       queryClient.invalidateQueries({
         queryKey: queryKey,
       });
