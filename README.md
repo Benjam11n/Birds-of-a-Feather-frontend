@@ -37,8 +37,6 @@
 
 I hope you enjoy this website!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
 
 The frontend of this project uses a comprehensive stack of technologies and frameworks to deliver a modern and responsive web application. Here's a detailed overview of the key components:
@@ -63,27 +61,23 @@ The frontend of this project uses a comprehensive stack of technologies and fram
 
 The feature set includes fundamental CRUD operations for data manipulation, as well as advanced functionalities such as filtering, sorting, searching, pagination, optimistic updates and account-based authentication using JWT tokens.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-To run the website locally, you need to clone both the frontend and backend applications:
+**To run the website locally, you need to clone both the frontend and backend applications:**
 
 **Setting up the frontend**
 
 - Open your terminal or command prompt.
 
-- Use the following command to clone the frontend repository:
-
-git clone https://github.com/Benjam11n/Birds-of-a-Feather-frontend
+- Use the following command to clone the frontend repository: git clone https://github.com/Benjam11n/Birds-of-a-Feather-frontend
 
 - Navigate to the Project Directory.
 
 - Install Dependencies by running the command "npm install".
 
-- Open up the constants file in the frontend project and change the "BACKEND_URL" to "http://localhost:8080"
+- Open up the constants file in the frontend project and change the constant "BACKEND_URL" to "http://localhost:8080"
 
 - Run the development server by running "npm run dev"
 
@@ -105,13 +99,11 @@ git clone https://github.com/Benjam11n/Birds-of-a-Feather-frontend
 
 - The application will be running at the following URL:http://localhost:8080
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- USAGE EXAMPLES -->
 
 ## Usage
 
-If not using the application locally, both the frontend and backend are hosted on Digital Ocean. You can access the frontend using the following link:
+Both the frontend and backend are hosted on Digital Ocean. You can access the frontend using the following link:
 
 [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
 
@@ -173,8 +165,6 @@ If not using the application locally, both the frontend and backend are hosted o
    - Sign out using the sign out button on the top right of the application.
    - Click on account statistics on the top right of the account homepage to see your account statistics.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- CONTACT -->
 
 ## Contact
@@ -191,8 +181,6 @@ Website link: [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki
 
 Docker Image Link: [**Docker hub**](https://hub.docker.com/repository/docker/benjamiiin/birds-of-a-feather-frontend)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
@@ -207,5 +195,3 @@ These are some of the awesome resources I used to build this application. Feel f
 - [react-hot-toast](https://react-hot-toast.com/)
 - [Recharts](https://recharts.org/en-US/)
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
