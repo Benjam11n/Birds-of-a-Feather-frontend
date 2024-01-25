@@ -2,10 +2,12 @@ import toast from "react-hot-toast";
 import { deletePost as deletePostApi } from "../../services/apiPosts";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { post } from "@/types/allTypes";
+import { useNavigate } from "react-router-dom";
 
 export function useDeletePost() {
   const queryClient = useQueryClient();
   const queryKey = ["posts"];
+  const navigate = useNavigate();
 
   const { mutate: deletePost, status } = useMutation<
     void,
@@ -38,6 +40,8 @@ export function useDeletePost() {
     onSuccess: () => {
       // display success toast
       toast.success("Post successfully deleted.");
+      // navigate to the dashboard
+      navigate("/dashboard", { replace: true });
     },
     onSettled: () => {
       queryClient.invalidateQueries({

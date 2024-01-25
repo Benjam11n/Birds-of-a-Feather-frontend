@@ -29,9 +29,9 @@
 
 ## About The Project
 
- <img src="./public/Logo.jpg" alt="Logo" width="160" height="160" style="border-radius: 50%">
+ <img src="./public/dashboard.jpg" alt="Logo" height="240">
 
-**Note:** This README refers to the frontend of the project. This repository contains the source code for the Birds of a Feather forum's frontend. Created the CVWO summer project, it is the result of approximately two months of learning web development, starting from ground zero since the end of last semester's exams.
+**Note:** This README refers to the frontend of the project. This repository contains the source code for the Birds of a Feather forum's frontend. Created for the **CVWO summer project**, it is the result of approximately two months of learning web development, starting from ground zero since the end of last semester's exams.
 
 **Forum Theme:** The central theme of the forum revolves around birds as I own two budgerigars, and I love birds! The forum is called "Birds of a Feather" as birds of a feather flock together.
 
@@ -69,17 +69,15 @@ The feature set includes fundamental CRUD operations for data manipulation, as w
 
 ## Getting Started
 
-Both the frontend and backend are hosted on Digital Ocean. You can access the frontend using the following link:
-
-[**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
-
-For additional usage instructions, refer to the details provided in the Usage section below.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 
 ## Usage
+
+Both the frontend and backend are hosted on Digital Ocean. You can access the frontend using the following link:
+
+[**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
 
 1. **Logging in and Signing up:**
 
