@@ -29,9 +29,9 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+ <img src="./public/Logo.jpg" alt="Logo" width="160" height="160" style="border-radius: 50%">
 
-**Note:** This README specifically pertains to the frontend of the project. Enclosed in this repository is the source code for the Birds of a Feather forum's frontend. Crafted for the CVWO summer project, it signifies the culmination of approximately two months of delving into web development, starting from ground zero and evolving continuously since the end of last semester's exams.
+**Note:** This README refers to the frontend of the project. This repository contains the source code for the Birds of a Feather forum's frontend. Created the CVWO summer project, it is the result of approximately two months of learning web development, starting from ground zero since the end of last semester's exams.
 
 **Forum Theme:** The central theme of the forum revolves around birds as I own two budgerigars, and I love birds! The forum is called "Birds of a Feather" as birds of a feather flock together.
 
@@ -41,7 +41,7 @@ I hope you enjoy this website!
 
 ### Built With
 
-The frontend of this project leverages a robust stack of technologies and frameworks to deliver a modern and responsive web application. Here's a detailed overview of the key components:
+The frontend of this project uses a comprehensive stack of technologies and frameworks to deliver a modern and responsive web application. Here's a detailed overview of the key components:
 
 - **React**: A dynamic JavaScript library for building interactive user interfaces, providing a seamless user experience.
 
@@ -59,7 +59,7 @@ The frontend of this project leverages a robust stack of technologies and framew
 
 - **React Hot Toasts**: Implemented for real-time notifications, providing users with instant feedback and enhancing overall interactivity.
 
-- **Docker**: Employing Docker for containerization, simplifying deployment and ensuring consistent performance across various environments.
+- **Docker**: Employed Docker for containerization, simplifying deployment and ensuring consistent performance across various environments.
 
 The feature set includes fundamental CRUD operations for data manipulation, as well as advanced functionalities such as filtering, sorting, searching, pagination, optimistic updates and account-based authentication using JWT tokens.
 
@@ -136,12 +136,16 @@ For additional usage instructions, refer to the details provided in the Usage se
 ## Contact
 
 **Telegram**: @benjaminwjy
+
 **Email**: ben.wang9000@gmail.com
 
 Frontend Source Code: [github.com](https://github.com/Benjam11n/Birds-of-a-Feather-frontend)
+
 Backend Source Code: [github.com](https://github.com/Benjam11n/Birds-of-a-Feather-backend)
 
 Website link: [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
+
+Docker Image Link: [**Docker hub**](https://hub.docker.com/repository/docker/benjamiiin/birds-of-a-feather-frontend)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -149,7 +153,7 @@ Website link: [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki
 
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+These are some of the awesome resources I used to build this application. Feel free to check them out!
 
 - [React Icons](https://react-icons.github.io/react-icons/search)
 - [Vite](https://github.com/vitejs/vite)

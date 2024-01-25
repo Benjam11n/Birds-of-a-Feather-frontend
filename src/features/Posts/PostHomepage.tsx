@@ -11,14 +11,14 @@ import { useCommunityById } from "../communities/useCommunityById";
 import { useAllReplyVotes } from "../replies/useAllReplyVotes";
 import AdditionalInformation from "@/ui/AdditionalInformation";
 
-// ... (imports)
-
 function PostHomepage() {
   const { postId } = useParams();
   const { post, isLoading: isLoadingPost } = usePost(Number(postId));
-  const { community, isLoading: isLoadingCommunity } = useCommunityById(
-    Number(post?.communityId)
-  );
+  const {
+    community,
+    isLoading: isLoadingCommunity,
+    error,
+  } = useCommunityById(Number(post?.communityId));
   const { replyVotes } = useAllReplyVotes();
   const { replies, isLoading: isLoadingReplies } = useReplies(Number(postId));
   // sort replies by highest likes
@@ -36,7 +36,7 @@ function PostHomepage() {
     return bVotesValue - aVotesValue;
   });
 
-  if (isLoadingPost || isLoadingReplies || isLoadingCommunity) {
+  if ((isLoadingPost || isLoadingReplies || isLoadingCommunity) && !error) {
     return <Spinner />;
   }
 
@@ -51,7 +51,7 @@ function PostHomepage() {
         {community ? (
           <CommunityDescription community={community} />
         ) : (
-          <AdditionalInformation />
+          <AdditionalInformation deletedCommunity={true} />
         )}
       </div>
       <div className="mx-4 my-4 space-y-3">

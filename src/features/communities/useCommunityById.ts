@@ -10,7 +10,6 @@ export function useCommunityById(communityId: number) {
   } = useQuery<community, Error>({
     queryKey: ["communities", Number(communityId)],
     queryFn: () => getCommunity(Number(communityId)),
-    retry: false,
   });
 
   return { isLoading, error, community };
