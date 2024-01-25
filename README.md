@@ -29,7 +29,7 @@
 
 ## About The Project
 
- <img src="./public/dashboard.png" alt="Logo" height="240">
+ <img src="./public/dashboard.png" alt="Logo" height="360">
 
 **Note:** This README refers to the frontend of the project. This repository contains the source code for the Birds of a Feather forum's frontend. Created for the **CVWO summer project**, it is the result of approximately two months of learning web development, starting from ground zero since the end of last semester's exams.
 
@@ -80,6 +80,7 @@ Both the frontend and backend are hosted on Digital Ocean. You can access the fr
 [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
 
 1. **Logging in and Signing up:**
+   <img src="./public/login_page.png" alt="Logo" height="360">
 
    - Upon entering the application, you'll be redirected to the login page.
    - Use the default login details (email: demo@example.com, password: demopassword) or sign up by clicking on the sign up tab.
@@ -91,12 +92,14 @@ Both the frontend and backend are hosted on Digital Ocean. You can access the fr
    - Join a community by clicking the "Join" button in the community header.
 
 3. **Creating a Post:**
+   <img src="./public/community_homepage.png" alt="Logo" height="360">
 
    - Join a community first (if not done already).
    - Click "Create Post" in the community header.
    - Fill in the required information to create a post.
 
 4. **Creating a Community:**
+   <img src="./public/community_list.png" alt="Logo" height="360">
 
    - Access the communities page via the left sidebar.
    - Click "Create Community" on the right side of the application.
