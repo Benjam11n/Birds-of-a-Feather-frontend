@@ -24,6 +24,7 @@ import { useGetUser } from "../users/useUsers";
 import AvatarIcon from "@/ui/AvatarIcon";
 import { usePost } from "../Posts/usePost";
 import { BACKEND_URL } from "@/utils/constants";
+import { NavLink } from "react-router-dom";
 
 function timeAgo(date: Date) {
   const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
@@ -121,13 +122,18 @@ function ReplyRow({ reply }: { reply: reply }) {
   return (
     <main className="ml-10">
       <Card>
-        <CardHeader>
+        <CardHeader className="grid grid-cols-[auto_auto_auto_1fr] gap-4 pb-3">
           <CardTitle>
             <AvatarIcon user={replyCreator!} />
           </CardTitle>
-          <CardDescription className="flex flex-row gap-4 pb-3">
+          <CardDescription>
             <div>
-              reply to <span className="font-semibold">{post?.title}</span>
+              <NavLink
+                to={"/posts/" + reply.parentId}
+                className="hover:underline"
+              >
+                reply to <span className="font-semibold">{post?.title}</span>
+              </NavLink>
             </div>
             <div>Likes: {totalVotes}</div>
             <div>Created: {formattedDate}</div>

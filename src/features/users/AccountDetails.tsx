@@ -5,7 +5,7 @@ import PostRow from "../Posts/PostRow";
 import ReplyRow from "../replies/ReplyRow";
 import Spinner from "@/ui/Spinner";
 import { Button } from "@/components/ui/button";
-import { useSearchParams } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 
 function AccountDetails() {
   const { currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
@@ -31,7 +31,7 @@ function AccountDetails() {
   };
 
   return (
-    <div className="space-x-1 space-y-4">
+    <div className="space-x-2 space-y-4">
       <Button
         onClick={() => handleFilterClick("posts")}
         disabled={currentFilter === "posts"}
@@ -45,9 +45,19 @@ function AccountDetails() {
         Replies
       </Button>
       {currentFilter === "posts"
-        ? creatorPosts.map((post) => <PostRow key={post.ID} post={post} />)
+        ? creatorPosts.map((post) => (
+            <div>
+              <NavLink to={"/posts/" + post.ID}>
+                <PostRow key={post.ID} post={post} />
+              </NavLink>
+            </div>
+          ))
         : creatorReplies?.map((reply) => (
-            <ReplyRow key={reply.ID} reply={reply} />
+            <div>
+              <NavLink to={"/posts/" + reply.parentId}>
+                <ReplyRow key={reply.ID} reply={reply} />
+              </NavLink>
+            </div>
           ))}
     </div>
   );

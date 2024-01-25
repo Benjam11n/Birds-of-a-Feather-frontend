@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/benjam11n/Birds-of-a-Feather-frontend">
-    <img src="./public/Logo.jpg" alt="Logo" width="160" height="160" style="border-radius: 50%;">
+    <img src="./public/Logo.jpg" alt="Logo" width="160" height="160" style="border-radius: 50%">
   </a>
 
   <h3 align="center">Birds of a Feather</h3>
@@ -63,8 +63,6 @@ The frontend of this project leverages a robust stack of technologies and framew
 
 The feature set includes fundamental CRUD operations for data manipulation, as well as advanced functionalities such as filtering, sorting, searching, pagination, optimistic updates and account-based authentication using JWT tokens.
 
-- [![React][React.js]][React-url]
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -86,11 +84,11 @@ For additional usage instructions, refer to the details provided in the Usage se
 1. **Logging in and Signing up:**
 
    - Upon entering the application, you'll be redirected to the login page.
-   - Use the default login details (email: example@example.com, password: password) or sign up by clicking on the sign up tab.
+   - Use the default login details (email: demo@example.com, password: demopassword) or sign up by clicking on the sign up tab.
 
 2. **Joining a Community:**
 
-   - Navigate to the communities via the left sidebar.
+   - Navigate to the communities page via the left sidebar.
    - Click on a community to visit its homepage.
    - Join a community by clicking the "Join" button in the community header.
 
@@ -102,12 +100,12 @@ For additional usage instructions, refer to the details provided in the Usage se
 
 4. **Creating a Community:**
 
-   - Access the communities via the left sidebar.
+   - Access the communities page via the left sidebar.
    - Click "Create Community" on the right side of the application.
 
 5. **Replying:**
 
-   - Find the "Reply" button at the bottom right of each post card.
+   - Find the "Reply" button at the bottom right of each post/reply card.
    - Click to reply to a post.
 
 6. **Upvote/Downvote:**
@@ -137,10 +135,11 @@ For additional usage instructions, refer to the details provided in the Usage se
 
 ## Contact
 
-- **Telegram**: @benjaminwjy
-- **Email**: ben.wang9000@gmail.com
+**Telegram**: @benjaminwjy
+**Email**: ben.wang9000@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Frontend Source Code: [github.com](https://github.com/Benjam11n/Birds-of-a-Feather-frontend)
+Backend Source Code: [github.com](https://github.com/Benjam11n/Birds-of-a-Feather-backend)
 
 Website link: [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
 
@@ -153,5 +152,12 @@ Website link: [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
 - [React Icons](https://react-icons.github.io/react-icons/search)
+- [Vite](https://github.com/vitejs/vite)
+- [React Query](https://tanstack.com/query/v3/)
+- [React Router](https://github.com/remix-run/react-router)
+- [shadcn-ui](https://github.com/shadcn-ui/ui)
+- [react-hot-toast](https://react-hot-toast.com/)
+- [Recharts](https://recharts.org/en-US/)
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

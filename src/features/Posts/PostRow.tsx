@@ -1,6 +1,6 @@
 import { post, users } from "../../types/allTypes";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
 import { useCurrentUser } from "../users/useCurrentUser";
 import { useGetUser } from "../users/useUsers";
@@ -20,20 +20,20 @@ function PostRow({ post }: { post: post }) {
   return (
     <main>
       <Card className="hover:bg-accent">
-        <CardHeader>
+        <div className="mt-4">
           <CardTitle>
             <PostDetails postCreator={postCreator!} post={post} />
           </CardTitle>
-        </CardHeader>
+        </div>
         <CardContent>
-          <div className="ml-8">{content}</div>
           {post.imagesUrl && (
             <img
-              className="col-span-5 rounded-md max-h-[500px] object-contain relative"
+              className="col-span-5 rounded-md max-h-[400px] object-contain relative"
               src={BACKEND_URL + imagesUrl}
               alt="post image"
             ></img>
           )}
+          <div className="ml-2 mt-6">{content}</div>
         </CardContent>
 
         {postId && (

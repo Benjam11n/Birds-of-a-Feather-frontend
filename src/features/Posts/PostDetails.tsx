@@ -5,6 +5,7 @@ import { timeAgo } from "@/utils/timeAgo";
 import { usePostVotes } from "./usePostVotes";
 import Spinner from "@/ui/Spinner";
 import { useCommunityById } from "../communities/useCommunityById";
+import { NavLink } from "react-router-dom";
 
 function PostDetails({
   postCreator,
@@ -32,11 +33,16 @@ function PostDetails({
   const className: string =
     "flex items-center justify-start space-x-2 text-muted-foreground";
   return (
-    <div className="grid w-full grid-cols-[auto_auto_auto_auto_auto_1fr] grid-rows-[auto_auto_auto_auto_1fr] gap-2 px-6">
+    <div className="grid w-full grid-cols-[auto_auto_auto_auto_auto_1fr] grid-rows-[auto_auto_auto] gap-2 px-6">
       <PostUser postCreator={postCreator} />
       {community?.title && (
         <div className="flex items-center justify-start space-x-2 gap-x-1">
-          post from <span className="font-semibold">{community?.title}</span>
+          <NavLink
+            to={`/communities/${community.ID}`}
+            className="hover:underline"
+          >
+            post from <span className="font-semibold">{community?.title}</span>
+          </NavLink>
         </div>
       )}
 

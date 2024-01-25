@@ -14,10 +14,11 @@ import { BACKEND_URL } from "@/utils/constants";
 
 function AdditionalInformation({
   popularCommunities,
+  deletedCommunity,
   user,
 }: {
   popularCommunities?: community[] | undefined;
-  community?: community | undefined;
+  deletedCommunity?: boolean;
   user?: users | undefined;
 }) {
   const navigate = useNavigate();
@@ -29,6 +30,9 @@ function AdditionalInformation({
           <Label className="text-lg">Popular Communities</Label>
         )}
         {user && <Label className="text-lg">{user.name}</Label>}
+        {deletedCommunity && (
+          <Label className="text-lg">The community has been deleted.</Label>
+        )}
       </CardHeader>
       <CardContent className="space-y-3">
         {popularCommunities &&
@@ -64,6 +68,12 @@ function AdditionalInformation({
             </div>
           ))}
         {user && <UserCommunities />}
+        {deletedCommunity && (
+          <div>
+            Feel free to go to the communities page to create your own
+            community!
+          </div>
+        )}
       </CardContent>
       <CardFooter className="flex justify-between">
         {user && (

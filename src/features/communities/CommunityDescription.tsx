@@ -36,13 +36,13 @@ function CommunityDescription({ community }: { community: community }) {
           {communityMembers?.length || 0} members
         </div>
         {community.userId === currentUser?.ID && (
-          <div className="space-x-1">
+          <div className="space-x-2 mt-2">
             <EditCommunityModal communityToEdit={community} />
 
             <ConfirmDelete
               text="delete"
               resourceName="community"
-              onConfirm={() => deleteCommunity(community.ID)}
+              onConfirm={() => deleteCommunity(community?.ID)}
               disabled={
                 isLoading || isLoadingCurrentUser || isDeletingCommunity
               }

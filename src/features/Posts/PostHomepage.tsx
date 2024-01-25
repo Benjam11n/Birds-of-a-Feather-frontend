@@ -9,6 +9,7 @@ import PostNotFound from "./PostNotFound";
 import CommunityDescription from "../communities/CommunityDescription";
 import { useCommunityById } from "../communities/useCommunityById";
 import { useAllReplyVotes } from "../replies/useAllReplyVotes";
+import AdditionalInformation from "@/ui/AdditionalInformation";
 
 // ... (imports)
 
@@ -47,7 +48,11 @@ function PostHomepage() {
     <div className="grid grid-cols-[1fr_auto] grid-rows-[auto_1fr_auto]">
       <PostRow post={post} />
       <div className="ml-6 mr-24 mt-3">
-        <CommunityDescription community={community!} />
+        {community ? (
+          <CommunityDescription community={community} />
+        ) : (
+          <AdditionalInformation />
+        )}
       </div>
       <div className="mx-4 my-4 space-y-3">
         {(sortedReplies?.length || 0) > 0 &&

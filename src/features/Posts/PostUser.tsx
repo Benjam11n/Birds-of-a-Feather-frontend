@@ -22,7 +22,13 @@ function PostUser({ postCreator }: { postCreator: users }) {
       <HoverCardContent>
         <div className="flex space-x-4">
           <Avatar>
-            <AvatarImage src={BACKEND_URL + postCreator?.avatarUrl} />
+            <AvatarImage
+              src={
+                postCreator?.avatarUrl
+                  ? BACKEND_URL + postCreator?.avatarUrl
+                  : "/default_avatar.jpg"
+              }
+            />
             <AvatarFallback>VC</AvatarFallback>
           </Avatar>
           <div className="space-y-1">
