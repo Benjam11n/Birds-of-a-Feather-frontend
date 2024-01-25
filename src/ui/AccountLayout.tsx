@@ -13,10 +13,10 @@ function AccountLayout() {
   const navigate = useNavigate();
   const { currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
   const { followings, isLoading: isLoadingFollowing } = useFollowing();
-  const { name, avatarUrl, userBio, CreatedAt } = currentUser;
+  const { name, avatarUrl, userBio, CreatedAt } = currentUser!;
   const followerNumber: number =
-    followings?.filter((user: users) => user.ID === currentUser.userId)
-      .length || 0;
+    followings?.filter((user: users) => user.ID === currentUser?.ID).length ||
+    0;
   if (isLoadingCurrentUser || isLoadingFollowing) return <Spinner />;
 
   return (

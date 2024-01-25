@@ -1,7 +1,7 @@
-import { newReply, replyVote } from "@/types/allTypes";
+import { newReply, reply, replyVote } from "@/types/allTypes";
 import { BACKEND_URL } from "@/utils/constants";
 
-export async function getReplies(parentId: number) {
+export async function getReplies(parentId: number): Promise<reply[]> {
   const response = await fetch(`${BACKEND_URL}/posts/${parentId}/replies`, {
     method: "GET",
   });
@@ -10,7 +10,7 @@ export async function getReplies(parentId: number) {
   return replies;
 }
 
-export async function getAllReplies() {
+export async function getAllReplies(): Promise<reply[]> {
   const response = await fetch(`${BACKEND_URL}/replies`, {
     method: "GET",
   });
@@ -19,7 +19,7 @@ export async function getAllReplies() {
   return replies;
 }
 
-export async function createReply(newReply: newReply) {
+export async function createReply(newReply: newReply): Promise<void> {
   const formData = new FormData();
   // Append other fields
   formData.append("ParentId", String(newReply.parentId));
@@ -45,7 +45,7 @@ export async function editReply({
 }: {
   replyId: number;
   newReply: newReply;
-}) {
+}): Promise<void> {
   const response = await fetch(
     `${BACKEND_URL}/posts/${newReply.parentId}/replies/${replyId}`,
     {
@@ -66,7 +66,7 @@ export async function deleteReply({
 }: {
   replyId: number;
   parentId: number;
-}) {
+}): Promise<void> {
   const response = await fetch(
     `${BACKEND_URL}/posts/${parentId}/replies/${replyId}`,
     {
@@ -79,7 +79,7 @@ export async function deleteReply({
   if (!response.ok) throw new Error("Failed to delete reply");
 }
 
-export async function voteReply(newReplyVote: replyVote) {
+export async function voteReply(newReplyVote: replyVote): Promise<void> {
   const replyId = newReplyVote.replyId;
   const response = await fetch(`${BACKEND_URL}/replies/${replyId}/votes`, {
     method: "POST",
@@ -111,7 +111,7 @@ export async function getAllReplyVotes(): Promise<replyVote[]> {
   return replyVotes.totalVotes;
 }
 
-export async function updateReplyVote(newReplyVote: replyVote) {
+export async function updateReplyVote(newReplyVote: replyVote): Promise<void> {
   const replyId = newReplyVote.replyId;
   const response = await fetch(`${BACKEND_URL}/replies/${replyId}/votes`, {
     method: "PUT",
@@ -124,7 +124,7 @@ export async function updateReplyVote(newReplyVote: replyVote) {
   if (!response.ok) throw new Error("Failed to update reply");
 }
 
-export async function deleteReplyVote(replyId: number) {
+export async function deleteReplyVote(replyId: number): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/replies/${replyId}/votes`, {
     method: "DELETE",
     headers: {

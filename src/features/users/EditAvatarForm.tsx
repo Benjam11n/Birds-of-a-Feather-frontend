@@ -26,8 +26,7 @@ function EditAvatarForm() {
   const { currentUser, isLoading } = useCurrentUser();
   const { updateUserAvatar, status } = useUpdateUserAvatar();
   const isUpdating: boolean = status === "pending";
-
-  const { ID } = currentUser;
+  const { ID } = currentUser!;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,7 +45,7 @@ function EditAvatarForm() {
     form.reset();
   }, [isSubmitSuccessful, form]);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading || isUpdating) return <Spinner />;
 
   const handleSubmit = (
     values: z.infer<typeof formSchema>,
@@ -86,7 +85,7 @@ function EditAvatarForm() {
           />
 
           <Button type="submit" className="w-full" disabled={isUpdating}>
-            Edit
+            {isUpdating ? "Updating..." : "Edit"}
           </Button>
         </form>
       </Form>

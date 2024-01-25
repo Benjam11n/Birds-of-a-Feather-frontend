@@ -19,13 +19,13 @@ function CommunityHeader({ community }: { community: community }) {
   const { currentUser } = useCurrentUser();
   const { joinCommunity, status: joinStatus } = useJoinCommunity(
     communityId,
-    currentUser.userId
+    currentUser!.ID
   );
   const { communityMembers, isLoading: communityMembersLoading } =
     useCommunityMembers(communityId);
   const { unfollowCommunity, status: unfollowStatus } = useUnfollowCommunity(
     communityId,
-    currentUser.userId
+    currentUser!.ID
   );
 
   // States
@@ -35,7 +35,7 @@ function CommunityHeader({ community }: { community: community }) {
   // Check if the user has already joined the community
   const alreadyJoined = communityMembers
     ?.map((member: communityMember) => member.userId)
-    .includes(currentUser.ID);
+    .includes(currentUser!.ID);
 
   // Loading spinner
   if (communityMembersLoading) return <Spinner />;

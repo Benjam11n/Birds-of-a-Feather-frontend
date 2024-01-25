@@ -1,6 +1,7 @@
+import { users } from "@/types/allTypes";
 import { BACKEND_URL } from "@/utils/constants";
 
-export async function getFollowings() {
+export async function getFollowings(): Promise<users[]> {
   const response = await fetch(`${BACKEND_URL}/follows`, {
     method: "GET",
     headers: {
@@ -9,11 +10,11 @@ export async function getFollowings() {
   });
   if (!response.ok) throw new Error("Failed to fetch followers");
 
-  const followers = await response.json();
+  const followers: users[] = await response.json();
   return followers;
 }
 
-export async function createFollow(followeeId: number) {
+export async function createFollow(followeeId: number): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/follows`, {
     method: "POST",
     headers: {
@@ -25,7 +26,7 @@ export async function createFollow(followeeId: number) {
   if (!response.ok) throw new Error("Failed to create follow");
 }
 
-export async function deleteFollow(followeeId: number) {
+export async function deleteFollow(followeeId: number): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/follows`, {
     method: "DELETE",
     headers: {

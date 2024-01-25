@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllReplies } from "../../services/apiReplies";
 
-function useAllReplies() {
+export function useAllReplies() {
   const {
     data: replies,
     isLoading,
@@ -13,5 +13,3 @@ function useAllReplies() {
 
   return { isLoading, error, replies };
 }
-
-export default useAllReplies;

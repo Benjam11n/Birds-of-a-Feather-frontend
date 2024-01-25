@@ -39,7 +39,7 @@ function EditPasswordForm() {
   const { updateUserPassword, status } = useUpdateUserPassword();
   const isUpdating: boolean = status === "pending";
 
-  const { ID, email } = currentUser;
+  const { ID, email } = currentUser!;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -138,7 +138,7 @@ function EditPasswordForm() {
           />
 
           <Button type="submit" className="w-full" disabled={isUpdating}>
-            Edit
+            {isUpdating ? "Updating..." : "Edit"}
           </Button>
         </form>
       </Form>

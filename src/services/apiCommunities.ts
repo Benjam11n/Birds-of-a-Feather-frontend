@@ -1,7 +1,7 @@
 import { community, communityMember, newCommunity } from "@/types/allTypes";
 import { BACKEND_URL } from "@/utils/constants";
 
-export async function getCommunities() {
+export async function getCommunities(): Promise<community[]> {
   const response = await fetch(`${BACKEND_URL}/communities`, {
     method: "GET",
   });
@@ -10,7 +10,7 @@ export async function getCommunities() {
   return communities;
 }
 
-export async function getCommunity(communityId: number) {
+export async function getCommunity(communityId: number): Promise<community> {
   const response = await fetch(`${BACKEND_URL}/communities/${communityId}`, {
     method: "GET",
   });
@@ -19,7 +19,9 @@ export async function getCommunity(communityId: number) {
   return community;
 }
 
-export async function createCommunity(newCommunity: newCommunity) {
+export async function createCommunity(
+  newCommunity: newCommunity
+): Promise<void> {
   const formData = new FormData();
   // Append all fields
   formData.append("Title", newCommunity.title);
@@ -43,7 +45,7 @@ export async function updateCommunity({
 }: {
   communityId: number;
   newCommunity: newCommunity;
-}) {
+}): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/communities/${communityId}`, {
     method: "PUT",
     headers: {
@@ -55,7 +57,7 @@ export async function updateCommunity({
   if (!response.ok) throw new Error("Failed to edit community");
 }
 
-export async function deleteCommunity(communityId: number) {
+export async function deleteCommunity(communityId: number): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/communities/${communityId}`, {
     method: "DELETE",
     headers: {
@@ -65,7 +67,9 @@ export async function deleteCommunity(communityId: number) {
   if (!response.ok) throw new Error("Failed to delete community");
 }
 
-export async function createCommunityMember(communityId: number) {
+export async function createCommunityMember(
+  communityId: number
+): Promise<void> {
   const response = await fetch(
     `${BACKEND_URL}/communities/${communityId}/members`,
     {
@@ -78,7 +82,7 @@ export async function createCommunityMember(communityId: number) {
   if (!response.ok) throw new Error("Failed to join community");
 }
 
-export async function getAllCommunityMembers() {
+export async function getAllCommunityMembers(): Promise<communityMember[]> {
   const response = await fetch(`${BACKEND_URL}/communitymembers`, {
     method: "GET",
   });
@@ -87,7 +91,9 @@ export async function getAllCommunityMembers() {
   return communityMembers;
 }
 
-export async function getCommunityMembers(communityId: number) {
+export async function getCommunityMembers(
+  communityId: number
+): Promise<communityMember[]> {
   const response = await fetch(
     `${BACKEND_URL}/communities/${communityId}/members`,
     {
@@ -99,7 +105,9 @@ export async function getCommunityMembers(communityId: number) {
   return communityMembers;
 }
 
-export async function deleteCommunityMember(communityId: number) {
+export async function deleteCommunityMember(
+  communityId: number
+): Promise<void> {
   const response = await fetch(
     `${BACKEND_URL}/communities/${communityId}/members`,
     {

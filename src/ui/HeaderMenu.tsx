@@ -7,7 +7,7 @@ function HeaderMenu() {
 
   return (
     <div className="flex flex-row justify-end">
-      <AvatarIcon user={currentUser} />
+      <AvatarIcon user={currentUser!} />
       <UserMenu />
     </div>
   );

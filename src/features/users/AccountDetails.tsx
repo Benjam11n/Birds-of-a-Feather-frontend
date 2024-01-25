@@ -1,52 +1,54 @@
 import { useCurrentUser } from "./useCurrentUser";
 import { usePosts } from "../Posts/usePosts";
-import { post, reply } from "@/types/allTypes";
+import { useAllReplies } from "../replies/useAllReplies";
 import PostRow from "../Posts/PostRow";
-import Spinner from "@/ui/Spinner";
-import { useSearchParams } from "react-router-dom";
-import useAllReplies from "../replies/useAllReplies";
 import ReplyRow from "../replies/ReplyRow";
+import Spinner from "@/ui/Spinner";
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from "react-router-dom";
 
 function AccountDetails() {
-  const { currentUser } = useCurrentUser();
+  const { currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser();
   const { posts, isLoading: isLoadingPosts } = usePosts();
   const { replies, isLoading: isLoadingReplies } = useAllReplies();
-  const creatorPosts: post[] =
-    posts?.filter((post: post) => post.userId === currentUser.userId) || [];
-
-  const creatorReplies: reply[] = replies?.filter(
-    (reply: reply) => reply.userId === currentUser.userId
+  const creatorPosts =
+    posts?.filter((post) => post.userId === currentUser!.ID) || [];
+  const creatorReplies = replies?.filter(
+    (reply) => reply.userId === currentUser!.ID
   );
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get("details") || "posts";
 
-  if (isLoadingReplies || isLoadingPosts) return <Spinner />;
+  // return spinner if loading
+  const isLoading: boolean =
+    isLoadingReplies || isLoadingPosts || isLoadingCurrentUser;
+  if (isLoading) return <Spinner />;
+
+  const handleFilterClick = (filterType: "posts" | "replies") => {
+    // set details in the url to filterType
+    searchParams.set("details", filterType);
+    setSearchParams(searchParams);
+  };
+
   return (
     <div className="space-x-1 space-y-4">
       <Button
-        onClick={() => {
-          searchParams.set("details", "posts");
-          setSearchParams(searchParams);
-        }}
+        onClick={() => handleFilterClick("posts")}
         disabled={currentFilter === "posts"}
       >
         Posts
       </Button>
       <Button
-        onClick={() => {
-          searchParams.set("details", "replies");
-          setSearchParams(searchParams);
-        }}
+        onClick={() => handleFilterClick("replies")}
         disabled={currentFilter === "replies"}
       >
         Replies
       </Button>
       {currentFilter === "posts"
-        ? creatorPosts &&
-          creatorPosts.map((post: post) => <PostRow post={post} />)
-        : creatorReplies &&
-          creatorReplies.map((reply: reply) => <ReplyRow reply={reply} />)}
+        ? creatorPosts.map((post) => <PostRow key={post.ID} post={post} />)
+        : creatorReplies?.map((reply) => (
+            <ReplyRow key={reply.ID} reply={reply} />
+          ))}
     </div>
   );
 }

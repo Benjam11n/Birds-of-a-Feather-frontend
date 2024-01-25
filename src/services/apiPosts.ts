@@ -1,7 +1,7 @@
 import { BACKEND_URL } from "@/utils/constants";
 import { post, newPost, postVote } from "../types/allTypes";
 
-export async function getPosts() {
+export async function getPosts(): Promise<post[]> {
   const response = await fetch(`${BACKEND_URL}/posts`, {
     method: "GET",
   });
@@ -10,7 +10,7 @@ export async function getPosts() {
   return posts;
 }
 
-export async function getPost(postId: number) {
+export async function getPost(postId: number): Promise<post> {
   const response = await fetch(`${BACKEND_URL}/posts/${postId}`, {
     method: "GET",
   });
@@ -19,7 +19,7 @@ export async function getPost(postId: number) {
   return post;
 }
 
-export async function createPost(newPost: newPost) {
+export async function createPost(newPost: newPost): Promise<void> {
   const formData = new FormData();
   // Append all fields
   formData.append("Title", newPost.title);
@@ -44,7 +44,7 @@ export async function editPost({
 }: {
   id: number;
   newPost: newPost;
-}) {
+}): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/posts/${id}`, {
     method: "PUT",
     headers: {
@@ -55,7 +55,7 @@ export async function editPost({
   });
   if (!response.ok) throw new Error("Failed to edit post");
 }
-export async function deletePost(id: number) {
+export async function deletePost(id: number): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/posts/${id}`, {
     method: "DELETE",
     headers: {
@@ -65,7 +65,7 @@ export async function deletePost(id: number) {
   if (!response.ok) throw new Error("Failed to delete post");
 }
 
-export async function votePost(postVote: postVote) {
+export async function votePost(postVote: postVote): Promise<void> {
   const id = postVote.postId;
 
   const response = await fetch(`${BACKEND_URL}/posts/${id}/votes`, {
@@ -103,7 +103,7 @@ export async function updatePostVote({
 }: {
   id: number;
   postVote: postVote;
-}) {
+}): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/posts/${id}/votes`, {
     method: "PUT",
     headers: {
@@ -115,7 +115,7 @@ export async function updatePostVote({
   if (!response.ok) throw new Error("Failed to update post");
 }
 
-export async function deletePostVote(id: number) {
+export async function deletePostVote(id: number): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/posts/${id}/votes`, {
     method: "DELETE",
     headers: {

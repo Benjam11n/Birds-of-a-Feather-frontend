@@ -30,7 +30,7 @@ function EditUsernameForm() {
   const isUpdating: boolean = status === "pending";
 
   const { ID, userBio, name, avatarUrl, email, password, CreatedAt } =
-    currentUser;
+    currentUser!;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -106,7 +106,7 @@ function EditUsernameForm() {
           />
 
           <Button type="submit" className="w-full" disabled={isUpdating}>
-            Edit
+            {isUpdating ? "Updating..." : "Edit"}
           </Button>
         </form>
       </Form>

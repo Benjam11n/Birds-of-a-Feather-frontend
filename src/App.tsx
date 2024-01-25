@@ -9,7 +9,7 @@ import DashBoard from "./pages/DashBoard";
 import AppLayout from "./ui/AppLayout";
 import Friends from "./pages/Friends";
 import FYP from "./pages/FYP";
-import AccountLayout from "./pages/AccountLayout";
+import Account from "./pages/Account";
 import PageNotFound from "./ui/PageNotFound";
 import Login from "./pages/Login";
 import ProtectedRoute from "./ui/ProtectedRoute";
@@ -50,7 +50,7 @@ export default function App() {
               <Route path="friends" element={<Friends />} />
               <Route path="fyp" element={<FYP />} />
               <Route path="editAccount" element={<EditAccount />} />
-              <Route path="account" element={<AccountLayout />}>
+              <Route path="account" element={<Account />}>
                 <Route path="details" element={<AccountDetails />} />
                 <Route path="statistics" element={<AccountStatistics />} />
               </Route>

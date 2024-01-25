@@ -15,14 +15,14 @@ function PostRow({ post }: { post: post }) {
   const { users } = useGetUser();
   const { userId } = post;
   const { content, imagesUrl } = post;
-  const postCreator: users = users?.find((user: users) => user.ID === userId);
+  const postCreator = users?.find((user: users) => user.ID === userId);
 
   return (
     <main>
       <Card className="hover:bg-accent">
         <CardHeader>
           <CardTitle>
-            <PostDetails postCreator={postCreator} post={post} />
+            <PostDetails postCreator={postCreator!} post={post} />
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -38,7 +38,7 @@ function PostRow({ post }: { post: post }) {
 
         {postId && (
           <div>
-            <PostOperations post={post} currentUser={currentUser} />
+            <PostOperations post={post} currentUser={currentUser!} />
           </div>
         )}
       </Card>

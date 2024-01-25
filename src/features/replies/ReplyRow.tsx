@@ -81,7 +81,7 @@ function ReplyRow({ reply }: { reply: reply }) {
   const userVote: replyVote[] =
     replyVotes?.filter(
       (replyVote: replyVote) =>
-        replyVote.userId === currentUser.ID && replyVote.replyId === replyId
+        replyVote.userId === currentUser!.ID && replyVote.replyId === replyId
     ) || [];
   const totalVotes: number = Array.isArray(replyVotes)
     ? replyVotes.reduce(
@@ -123,7 +123,7 @@ function ReplyRow({ reply }: { reply: reply }) {
       <Card>
         <CardHeader>
           <CardTitle>
-            <AvatarIcon user={replyCreator} />
+            <AvatarIcon user={replyCreator!} />
           </CardTitle>
           <CardDescription className="flex flex-row gap-4 pb-3">
             <div>
@@ -146,7 +146,7 @@ function ReplyRow({ reply }: { reply: reply }) {
         </CardContent>
         <CardFooter className="flex flex-row justify-end">
           <div className="flex flex-row gap-1">
-            {currentUser.ID === userId && (
+            {currentUser!.ID === userId && (
               <ConfirmDelete
                 text="Delete"
                 resourceName="reply"
@@ -162,14 +162,14 @@ function ReplyRow({ reply }: { reply: reply }) {
               ></ConfirmDelete>
             )}
 
-            {currentUser.ID === userId && (
+            {currentUser!.ID === userId && (
               <EditReplyModal replyToEdit={reply} />
             )}
 
             <Button
               onClick={() => {
                 const newReplyVote: replyVote = {
-                  userId: currentUser.ID,
+                  userId: currentUser!.ID,
                   replyId: replyId,
                   voteValue: 1,
                   CreatedAt: new Date().toISOString(),
@@ -198,7 +198,7 @@ function ReplyRow({ reply }: { reply: reply }) {
             <Button
               onClick={() => {
                 const newReplyVote: replyVote = {
-                  userId: currentUser.ID,
+                  userId: currentUser!.ID,
                   replyId: replyId,
                   voteValue: -1,
                   CreatedAt: new Date().toISOString(),

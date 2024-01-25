@@ -1,7 +1,7 @@
 import { LoginUser } from "@/types/allTypes";
 import { BACKEND_URL } from "@/utils/constants";
 
-export async function login(user: LoginUser) {
+export async function login(user: LoginUser): Promise<void> {
   // make the fetch request with the data as the body
   const response = await fetch(`${BACKEND_URL}/login`, {
     method: "POST",
@@ -14,19 +14,6 @@ export async function login(user: LoginUser) {
   if (!response.ok) throw new Error("Incorrect email or password");
   const { token } = await response.json();
   localStorage.setItem("token", token);
-}
-
-export async function getCurrentUser() {
-  const response = await fetch(`${BACKEND_URL}/`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `${localStorage.getItem("token")}`,
-    },
-  });
-  if (!response.ok) throw new Error("Failed to get current user");
-  const user = await response.json();
-  return user;
 }
 
 export async function signUp({
@@ -54,24 +41,4 @@ export async function signUp({
   });
 
   if (!response.ok) throw new Error("Failed to signup");
-}
-
-export async function getUsers() {
-  const response = await fetch(`${BACKEND_URL}/users`);
-  if (!response.ok) throw new Error("Failed to fetch users");
-
-  const friends = await response.json();
-  return friends;
-}
-
-export async function logOut(): Promise<void> {
-  const response = await fetch(`${BACKEND_URL}/logout`, {
-    method: "POST",
-    headers: {
-      Authorization: `${localStorage.getItem("token")}`,
-    },
-  });
-
-  if (!response.ok) throw new Error("Failed to logout");
-  localStorage.removeItem("token");
 }

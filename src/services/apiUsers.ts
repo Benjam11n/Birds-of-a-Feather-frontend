@@ -1,5 +1,44 @@
-import { newUser, newUserAvatar, newUserPassword } from "@/types/allTypes";
+import {
+  community,
+  newUser,
+  newUserAvatar,
+  newUserPassword,
+  users,
+} from "@/types/allTypes";
 import { BACKEND_URL } from "@/utils/constants";
+
+export async function getUsers(): Promise<users[]> {
+  const response = await fetch(`${BACKEND_URL}/users`);
+  if (!response.ok) throw new Error("Failed to fetch users");
+
+  const friends = await response.json();
+  return friends;
+}
+
+export async function getCurrentUser(): Promise<users> {
+  const response = await fetch(`${BACKEND_URL}/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+  if (!response.ok) throw new Error("Failed to get current user");
+  const user = await response.json();
+  return user;
+}
+
+export async function logOut(): Promise<void> {
+  const response = await fetch(`${BACKEND_URL}/logout`, {
+    method: "POST",
+    headers: {
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+
+  if (!response.ok) throw new Error("Failed to logout");
+  localStorage.removeItem("token");
+}
 
 export async function updateUser({
   userId,
@@ -7,7 +46,7 @@ export async function updateUser({
 }: {
   userId: number;
   newUser: newUser;
-}) {
+}): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/users/${userId}`, {
     method: "PUT",
     headers: {
@@ -25,7 +64,7 @@ export async function updateUserAvatar({
 }: {
   userId: number;
   newUser: newUserAvatar;
-}) {
+}): Promise<void> {
   const formData = new FormData();
   formData.append("avatarUrl", newUser.avatarUrl);
 
@@ -48,7 +87,7 @@ export async function updateUserPassword({
 }: {
   userId: number;
   newUser: newUserPassword;
-}) {
+}): Promise<void> {
   const response = await fetch(`${BACKEND_URL}/users/${userId}/password`, {
     method: "PUT",
     headers: {
@@ -60,7 +99,7 @@ export async function updateUserPassword({
   if (!response.ok) throw new Error("Failed to update user");
 }
 
-export async function getUserCommunities() {
+export async function getUserCommunities(): Promise<community[]> {
   const response = await fetch(`${BACKEND_URL}/userCommunities`, {
     method: "GET",
     headers: {

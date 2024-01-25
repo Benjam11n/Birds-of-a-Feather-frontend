@@ -27,7 +27,7 @@ function EditEmailForm() {
   const { updateUser, status } = useUpdateUser();
   const isUpdating: boolean = status === "pending";
 
-  const { ID, email, name, avatarUrl, userBio } = currentUser;
+  const { ID, email, name, avatarUrl, userBio } = currentUser!;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -84,7 +84,7 @@ function EditEmailForm() {
           />
 
           <Button type="submit" className="w-full" disabled={isUpdating}>
-            Edit
+            {isUpdating ? "Updating..." : "Edit"}
           </Button>
         </form>
       </Form>
