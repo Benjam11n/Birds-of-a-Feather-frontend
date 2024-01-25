@@ -80,6 +80,7 @@ Both the frontend and backend are hosted on Digital Ocean. You can access the fr
 [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
 
 1. **Logging in and Signing up:**
+
    <img src="./public/login_page.png" alt="Logo" height="360">
 
    - Upon entering the application, you'll be redirected to the login page.
@@ -92,6 +93,7 @@ Both the frontend and backend are hosted on Digital Ocean. You can access the fr
    - Join a community by clicking the "Join" button in the community header.
 
 3. **Creating a Post:**
+
    <img src="./public/community_homepage.png" alt="Logo" height="360">
 
    - Join a community first (if not done already).
@@ -99,6 +101,7 @@ Both the frontend and backend are hosted on Digital Ocean. You can access the fr
    - Fill in the required information to create a post.
 
 4. **Creating a Community:**
+
    <img src="./public/community_list.png" alt="Logo" height="360">
 
    - Access the communities page via the left sidebar.
