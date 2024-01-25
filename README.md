@@ -69,13 +69,49 @@ The feature set includes fundamental CRUD operations for data manipulation, as w
 
 ## Getting Started
 
+To run the website locally, you need to clone both the frontend and backend applications:
+
+**Setting up the frontend**
+
+- Open your terminal or command prompt.
+
+- Use the following command to clone the frontend repository:
+
+git clone https://github.com/Benjam11n/Birds-of-a-Feather-frontend
+
+- Navigate to the Project Directory.
+
+- Install Dependencies by running the command "npm install".
+
+- Open up the constants file in the frontend project and change the "BACKEND_URL" to "http://localhost:8080"
+
+- Run the development server by running "npm run dev"
+
+- Once the application is running, open your web browser and go to the following URL:http://localhost:5173
+
+**Setting up the Backend**
+
+- Open your terminal or command prompt.
+
+- Use the following command to clone the backend repository:
+
+- git clone https://github.com/Benjam11n/Birds-of-a-Feather-backend
+
+- Open up the project and create a `.env` file in the root of the project.
+
+- In the .env file, create a new environment variable "DATABASE_URL" and set it to your own PostgreSQL URL. For example: "postgres://postgres:password@db:5432/Birds-of-a-Feather"
+
+- Run the backend application by running the following command: "go run ."
+
+- The application will be running at the following URL:http://localhost:8080
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 
 ## Usage
 
-Both the frontend and backend are hosted on Digital Ocean. You can access the frontend using the following link:
+If not using the application locally, both the frontend and backend are hosted on Digital Ocean. You can access the frontend using the following link:
 
 [**Birds of a Feather Frontend**](https://birds-of-a-feather-c5xki.ondigitalocean.app)
 
@@ -118,6 +154,8 @@ Both the frontend and backend are hosted on Digital Ocean. You can access the fr
    - Use the upvote/downvote buttons at the bottom right of each post/ reply card.
 
 7. **Following and Unfollowing:**
+
+   <img src="./public/friends_page.png" alt="Logo" height="360">
 
    - Navigate to the Friends page via the left sidebar.
    - Manage followers on the left and potential followers on the right.
