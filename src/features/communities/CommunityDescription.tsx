@@ -31,7 +31,7 @@ function CommunityDescription({ community }: { community: community }) {
         <Label className="text-lg">{community.title}</Label>
       </CardHeader>
       <CardContent>{community.description}</CardContent>
-      <CardFooter className="grid grid-rows-2">
+      <CardFooter className="grid grid-rows-[1fr_auto]">
         <div className="text-muted-foreground mb-2">
           {communityMembers?.length || 0} members
         </div>

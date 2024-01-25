@@ -6,16 +6,16 @@ import { ReactNode, useEffect } from "react";
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   // 1. Load the authenticated user
-  const { currentUser, isLoading } = useCurrentUser();
+  const { currentUser, isLoading, fetchStatus } = useCurrentUser();
 
   // 2. If there is no authenticated user, redirect to login
   useEffect(
     function () {
-      if (!currentUser && !isLoading) {
+      if (!currentUser && !isLoading && fetchStatus !== "fetching") {
         navigate("/login");
       }
     },
-    [currentUser, navigate, isLoading],
+    [currentUser, navigate, isLoading, fetchStatus]
   );
 
   // 3. While loading, show spinner

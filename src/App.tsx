@@ -18,6 +18,7 @@ import AccountDetails from "./features/users/AccountDetails";
 import Communities from "./pages/Communities";
 import Community from "./pages/Community";
 import EditAccount from "./pages/EditAccount";
+import Post from "./pages/Post";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,6 +45,7 @@ export default function App() {
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<DashBoard />} />
               <Route path="communities" element={<Communities />} />
+              <Route path="posts/:postId" element={<Post />} />
               <Route path="communities/:communityId" element={<Community />} />
               <Route path="friends" element={<Friends />} />
               <Route path="fyp" element={<FYP />} />

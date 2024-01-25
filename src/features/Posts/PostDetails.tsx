@@ -5,7 +5,6 @@ import { timeAgo } from "@/utils/timeAgo";
 import { usePostVotes } from "./usePostVotes";
 import Spinner from "@/ui/Spinner";
 import { useCommunityById } from "../communities/useCommunityById";
-import { BACKEND_URL } from "@/utils/constants";
 
 function PostDetails({
   postCreator,
@@ -14,7 +13,7 @@ function PostDetails({
   postCreator: users;
   post: post;
 }) {
-  const { title, content, CreatedAt, edited, tags, communityId, ID } = post;
+  const { title, CreatedAt, edited, tags, communityId, ID } = post;
   const { community, isLoading: isLoadingCommunity } =
     useCommunityById(communityId);
   const { postVotes, isLoading: isLoadingPostVotes } = usePostVotes(ID);
@@ -52,15 +51,6 @@ function PostDetails({
       </div>
 
       {tags && <Badge className="justify-left mb-4 flex w-fit">{tags}</Badge>}
-
-      <p className="col-span-5 col-start-1 mb-4 text-justify">{content}</p>
-      {post.imagesUrl && (
-        <img
-          className="col-span-5 rounded-md max-h-[500px] object-contain relative"
-          src={BACKEND_URL + post.imagesUrl}
-          alt="post image"
-        ></img>
-      )}
     </div>
   );
 }

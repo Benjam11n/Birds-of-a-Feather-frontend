@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/benjam11n/Birds-of-a-Feather-frontend">
-    <img src="./public/Logo.jpg" alt="Logo" width="200" height="200" style="border-radius: 50%;">
+    <img src="./public/Logo.jpg" alt="Logo" width="160" height="160" style="border-radius: 50%;">
   </a>
 
   <h3 align="center">Birds of a Feather</h3>
@@ -31,7 +31,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-**Disclaimer:** This README addresses the frontend of the project. This repository contains the source code for the frontend of the Birds of a Feather forum. It represents the culmination of about two months of learning web development from scratch and developing ever since exams ended last semester.
+**Note:** This README specifically pertains to the frontend of the project. Enclosed in this repository is the source code for the Birds of a Feather forum's frontend. Crafted for the CVWO summer project, it signifies the culmination of approximately two months of delving into web development, starting from ground zero and evolving continuously since the end of last semester's exams.
 
 **Forum Theme:** The central theme of the forum revolves around birds as I own two budgerigars, and I love birds! The forum is called "Birds of a Feather" as birds of a feather flock together.
 
@@ -55,7 +55,11 @@ The frontend of this project leverages a robust stack of technologies and framew
 
 - **React Query**: Efficient state management that simplifies data fetching, caching, and updates, contributing to a responsive and interactive user interface.
 
+- **Recharts**: To display statistics in a clean and responsive manner.
+
 - **React Hot Toasts**: Implemented for real-time notifications, providing users with instant feedback and enhancing overall interactivity.
+
+- **Docker**: Employing Docker for containerization, simplifying deployment and ensuring consistent performance across various environments.
 
 The feature set includes fundamental CRUD operations for data manipulation, as well as advanced functionalities such as filtering, sorting, searching, pagination, optimistic updates and account-based authentication using JWT tokens.
 

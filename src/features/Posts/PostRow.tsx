@@ -1,43 +1,47 @@
 import { post, users } from "../../types/allTypes";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import ReplyTable from "../replies/ReplyTable";
 import { useCurrentUser } from "../users/useCurrentUser";
-import { useReplies } from "../replies/useReplies";
 import { useGetUser } from "../users/useUsers";
 import PostDetails from "./PostDetails";
 import PostOperations from "./PostOperations";
+import { BACKEND_URL } from "@/utils/constants";
+import { useParams } from "react-router-dom";
 
 function PostRow({ post }: { post: post }) {
   const { currentUser } = useCurrentUser();
+  const { postId } = useParams();
   const { users } = useGetUser();
-  const { replies } = useReplies(post.ID);
   const { userId } = post;
-
+  const { content, imagesUrl } = post;
   const postCreator: users = users?.find((user: users) => user.ID === userId);
 
   return (
     <main>
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>
+      <Card className="hover:bg-accent">
+        <CardHeader>
+          <CardTitle>
             <PostDetails postCreator={postCreator} post={post} />
-          </AccordionTrigger>
-
-          <PostOperations post={post} currentUser={currentUser} />
-          {replies?.length > 0 && (
-            <AccordionContent>
-              <ReplyTable post={post} />
-            </AccordionContent>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="ml-8">{content}</div>
+          {post.imagesUrl && (
+            <img
+              className="col-span-5 rounded-md max-h-[500px] object-contain relative"
+              src={BACKEND_URL + imagesUrl}
+              alt="post image"
+            ></img>
           )}
-        </AccordionItem>
-      </Accordion>
+        </CardContent>
+
+        {postId && (
+          <div>
+            <PostOperations post={post} currentUser={currentUser} />
+          </div>
+        )}
+      </Card>
     </main>
   );
 }

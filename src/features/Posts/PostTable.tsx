@@ -1,7 +1,7 @@
 import { usePosts } from "./usePosts";
 import Spinner from "../../ui/Spinner";
 import PostRow from "./PostRow";
-import { useSearchParams } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import Pagination from "@/ui/Pagination";
 import { PAGE_SIZE } from "../../utils/constants";
 import { post, postVote } from "../../types/allTypes";
@@ -129,10 +129,14 @@ function PostTable() {
 
   return (
     <div className="grid grid-cols-[1fr_auto] space-y-2">
-      <div>
+      <div className="space-y-2">
         {(paginatedPosts?.length || 0) > 0 ? (
           paginatedPosts?.map((post: post) => (
-            <PostRow post={post} key={post.ID} />
+            <div>
+              <NavLink to={`/posts/${post.ID}`}>
+                <PostRow post={post} key={post.ID} />
+              </NavLink>
+            </div>
           ))
         ) : (
           <PostNotFound />

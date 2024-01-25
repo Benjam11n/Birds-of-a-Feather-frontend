@@ -25,7 +25,7 @@ function Pagination({ count }: { count: number }) {
   if (pageCount <= 1) return null;
 
   return (
-    <div className="w-56 h-16 gap-2 grid grid-rows-2 grid-cols-2 mb-12 mt-6">
+    <div className="w-56 h-16 gap-2 grid grid-rows-2 grid-cols-2 mb-12 mt-6 col-span-2">
       <p className="col-span-2 ml-2">
         Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to{" "}
         <span>

@@ -102,6 +102,15 @@ export async function getReplyVotes(replyId: number): Promise<replyVote[]> {
   return replyVotes.totalVotes;
 }
 
+export async function getAllReplyVotes(): Promise<replyVote[]> {
+  const response = await fetch(`${BACKEND_URL}/replyvotes`, {
+    method: "GET",
+  });
+  if (!response.ok) throw new Error("Failed to get reply votes");
+  const replyVotes = await response.json();
+  return replyVotes.totalVotes;
+}
+
 export async function updateReplyVote(newReplyVote: replyVote) {
   const replyId = newReplyVote.replyId;
   const response = await fetch(`${BACKEND_URL}/replies/${replyId}/votes`, {

@@ -7,6 +7,7 @@ import AdditionalInformation from "@/ui/AdditionalInformation";
 import { useCommunities } from "../communities/useCommunities";
 import { useAllCommunityMembers } from "../communities/useAllCommunityMembers";
 import PostNotFound from "../Posts/PostNotFound";
+import { NavLink } from "react-router-dom";
 
 function FypTable() {
   const { posts, isLoading } = usePosts();
@@ -41,10 +42,16 @@ function FypTable() {
 
   return (
     <div className="grid grid-cols-[1fr_auto] space-y-2">
-      <div>
+      <div className="space-y-2">
         {(followingPosts?.length || 0) > 0 ? (
           followingPosts?.map((post: post) => {
-            return <PostRow post={post} />;
+            return (
+              <div>
+                <NavLink to={`/posts/${post.ID}`}>
+                  <PostRow post={post} />
+                </NavLink>
+              </div>
+            );
           })
         ) : (
           <PostNotFound />
