@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import { useCurrentUser } from "../features/users/useCurrentUser";
-import Spinner from "./Spinner";
-import { ReactNode, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useCurrentUser } from '../features/users/useCurrentUser';
+import Spinner from './Spinner';
+import { ReactNode, useEffect } from 'react';
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
   useEffect(
     function () {
       if (!currentUser && !isLoading) {
-        navigate("/login");
+        navigate('/login');
       }
     },
     [currentUser, navigate, isLoading]
